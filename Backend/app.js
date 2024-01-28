@@ -9,7 +9,7 @@ async function run() {
   // For text-only input, use the gemini-pro model
   const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
-  const prompt = "Describe Ram Mandir inauguration like a disneyland";
+  const prompt = "what did i ask you previously";
 
   const result = await model.generateContent(prompt);
   const response = await result.response;
