@@ -1,5 +1,3 @@
-// login_choose.dart
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jli_frontend/ui/signup_page.dart';
@@ -12,151 +10,63 @@ class LoginChoose extends StatelessWidget {
   // loginWithCode=
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      // onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
-      child: Scaffold(
-        // key: scaffoldKey,
-        backgroundColor: const Color.fromARGB(255, 216, 180, 160),
-        body: SafeArea(
-          top: true,
-          child: Container(
-            width: MediaQuery.sizeOf(context).width,
-            height: MediaQuery.sizeOf(context).height * 1,
-            decoration: BoxDecoration(
-              color: Color(0xFFD8B4A0),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Container(
-                      width: 49,
-                      height: 100,
-                      decoration: BoxDecoration(
-                        color: Color(0xFFD8B4A0),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 5),
-                        child: GestureDetector(
-                          child: IconButton(
-                            onPressed: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                    builder: (_) => ChooseLangPage()),
-                              );
-                            },
-                            icon: Icon(
-                              Icons.arrow_back,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Align(
-                      alignment: AlignmentDirectional(-1.00, -1.00),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 30, 20, 20),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              'JusticeLink',
-                              style: GoogleFonts.italiana(
-                                color: Colors.black,
-                                fontSize: 22,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Text(
-                              'INDIA',
-                              style: GoogleFonts.juliusSansOne(
-                                color: Color.fromARGB(255, 87, 99, 108),
-                                fontSize: 10,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [],
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 20),
-                  child: Container(
-                    width: MediaQuery.sizeOf(context).width,
-                    height: 112,
-                    decoration: BoxDecoration(
-                      color: Color(0xFFD8B4A0),
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Align(
-                          alignment: AlignmentDirectional(0.00, 0.00),
-                          child: Text(
-                            'LOGIN',
-                            textAlign: TextAlign.center,
-                            style: GoogleFonts.juliusSansOne(
-                              // fontFamily: '',
+    Size screenSize = MediaQuery.of(context).size;
 
-                              fontSize: 38.18,
-                              letterSpacing: 6,
-                              fontWeight: FontWeight.w900,
-                            ),
-                          ),
+    return GestureDetector(
+      child: Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        body: SafeArea(
+          // top: true,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'LOGIN',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.juliusSansOne(
+                      // fontFamily: '',
+
+                      fontSize: 38.18,
+                      letterSpacing: 6,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                  Container(
+                    width: screenSize.width * 1,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Column(
+                          children: [
+                            LoginWithCode(),
+                            LoginWithFingerprint(),
+                          ],
                         ),
                       ],
                     ),
                   ),
-                ),
-                Container(
-                  width: MediaQuery.sizeOf(context).width,
-                  height: MediaQuery.sizeOf(context).height * 0.303,
-                  decoration: BoxDecoration(
-                    color: Color(0xFFD8B4A0),
-                  ),
-                  child: ListView(
-                    padding: EdgeInsets.zero,
-                    scrollDirection: Axis.vertical,
-                    children: [
-                      LoginWithCode(),
-                      LoginWithFingerprint(),
-                    ],
-                  ),
-                ),
-                Container(
-                  width: MediaQuery.sizeOf(context).width * 0.8,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    color: Color(0xFFD8B4A0),
-                  ),
-                  child: Align(
-                    alignment: AlignmentDirectional(0.00, -8.00),
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(builder: (_) => SignupPage()),
-                        );
-                      },
-                      child: Text(
-                        'New user? Click here to <sign up>',
-                        style: GoogleFonts.lato(fontSize: 15),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (_) => SignupPage()),
+                      );
+                    },
+                    child: Text(
+                      'New user? Click here to <sign up>',
+                      style: GoogleFonts.lato(
+                        fontSize: 15,
+                        color: Colors.black,
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
+            ],
           ),
         ),
       ),
@@ -173,7 +83,6 @@ class LoginWithCode extends StatelessWidget {
       padding: EdgeInsetsDirectional.fromSTEB(30, 12, 30, 12),
       child: ElevatedButton(
           onPressed: () {
-// Navigate to the LoginChoose page
             Navigator.of(context).push(
               MaterialPageRoute(builder: (_) => LoginWithAadhaarPage()),
             );
