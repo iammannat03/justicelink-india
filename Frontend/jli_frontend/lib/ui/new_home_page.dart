@@ -19,55 +19,15 @@ class _NewHomePageState extends State<NewHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        // iconSize: 1,
-        selectedItemColor: Color(0xFFD8B4A0),
-        items: [
-          // BottomNavigationBarItem(icon: Icon(Icons.home_rounded,color: Colors.black,) , label: "", ),
-          // BottomNavigationBarItem(icon: Icon(Icons.home_rounded),label: "Ho"),
-          BottomNavigationBarItem(
-              icon: GestureDetector(
-                onTap: () {
-                  Navigator.of(context).pushAndRemoveUntil(
-                      MaterialPageRoute(builder: (context) => NewHomePage()),
-                      (route) => false);
-                },
-                child: Icon(
-                  Icons.home_rounded,
-                  color: Colors.black,
-                ),
-              ),
-              label: "Home"),
-          BottomNavigationBarItem(
-              icon: GestureDetector(
-                onTap: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => ConnectPage()),
-                  );
-                },
-                child: Icon(
-                  Icons.pin_drop_rounded,
-                  color: Colors.black,
-                ),
-              ),
-              label: "Nearby Aid"),
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.message_rounded,
-                color: Colors.black,
-              ),
-              label: "Messages"),
-          // BottomNavigationBarItem(icon: Icon(Icons.calendar_month_rounded,color: Colors.black,) , label: "Events" ),
-        ],
-      ),
+
       floatingActionButton: Container(
         height: 70,
         width: 100,
         child: FloatingActionButton(
           backgroundColor: Color.fromARGB(254, 182, 161, 149),
           onPressed: () {},
-          child: Padding(
-            padding: const EdgeInsets.all(5.0),
+          child: const Padding(
+            padding: EdgeInsets.all(5.0),
             child: Column(
               children: [
                 SizedBox(
@@ -89,174 +49,39 @@ class _NewHomePageState extends State<NewHomePage> {
           ),
         ),
       ),
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        iconTheme: IconThemeData(
-          color: Colors.black, //change your color here
-        ),
-        backgroundColor: Colors.white,
-        elevation: 0,
-        // bottomOpacity: 100,
-        title: Column(
-          children: [
-            Text(
-              'JusticeLink',
-              style: GoogleFonts.italiana(
-                color: Colors.black,
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Text(
-              'INDIA',
-              style: GoogleFonts.juliusSansOne(
-                color: Colors.black,
-                fontSize: 10,
-              ),
-            ),
-          ],
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ElevatedButton(
-              onPressed: () {},
-              child: Text(
-                "English",
-                style: GoogleFonts.juliusSansOne(
-                    fontSize: 15, fontWeight: FontWeight.w600),
-              ),
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromARGB(255, 128, 105, 90),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  )),
-            ),
-          ),
-          SizedBox(
-            width: 7,
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.menu_rounded, color: Colors.black),
-          ),
-          SizedBox(
-            width: 20,
-          ),
-        ],
-      ),
       body: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
             Container(
-              width: 414,
-              height: 250,
-              decoration: BoxDecoration(color: Colors.white70),
-              child: Padding(
-                padding: EdgeInsets.all(7),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          // print("The card was tapped hurray!!");
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => LegalInfoPage()));
-                        },
-                        child: HomeScreenCard(
-                            image: AssetImage(
-                              "assets/card-image-1.png",
-                            ),
-                            onImageWidget: Padding(
-                              padding: const EdgeInsets.all(16.0),
-                              child: Column(
-                                children: [
-                                  Text(
-                                    "JLI's AI INTEGRATED",
-                                    textAlign: TextAlign.center,
-                                    softWrap: true,
-                                    style: GoogleFonts.lato(
-                                        fontSize: 13,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  Text(
-                                    "CHATBOT",
-                                    textAlign: TextAlign.center,
-                                    softWrap: true,
-                                    style: GoogleFonts.lato(
-                                        fontSize: 13,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  Image.asset(
-                                    "assets/card-image-2.png",
-                                    height: 100,
-                                    width: 110,
-                                  ),
-                                  Text(
-                                    "KNOW YOUR",
-                                    textAlign: TextAlign.center,
-                                    softWrap: true,
-                                    style: GoogleFonts.lato(
-                                      fontSize: 15,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                  Text(
-                                    "RIGHTS",
-                                    textAlign: TextAlign.center,
-                                    softWrap: true,
-                                    style: GoogleFonts.lato(
-                                        fontSize: 15, color: Colors.white),
-                                  ),
-                                ],
-                              ),
-                            )),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => ConnectPage()));
-                        },
-                        child: HomeScreenCard(
-                          image: AssetImage("assets/card-image-3.png"),
-                          onImageWidget: Container(
-                            height: 250,
-                            width: 155,
-                            decoration: BoxDecoration(
-                              color: Colors.transparent,
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "CONNECT WITH",
-                                  style: GoogleFonts.lato(
-                                      fontSize: 14, color: Colors.white),
-                                ),
-                                Text(
-                                  "LAWYERS",
-                                  style: GoogleFonts.lato(
-                                      fontSize: 14, color: Colors.white),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-
-                      HomeScreenCard(
-                          image: AssetImage("assets/card-image-4.png"),
-                          onImageWidget: Text(""))
-                      // HomeScreenCard(),
-                    ],
+              width: double.infinity,
+              height: 300,
+              // height: 300,
+              decoration: BoxDecoration(color: Colors.white),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 5),
+                    child: Text("How to use?",style: GoogleFonts.lato(fontSize: 25),),
                   ),
-                ),
+                  Padding(
+                    padding: EdgeInsets.all(7),
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          FinalHomeScreenCard(),
+                          FinalHomeScreenCard(),
+                          FinalHomeScreenCard(),
+                          FinalHomeScreenCard(),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             SizedBox(
@@ -270,26 +95,33 @@ class _NewHomePageState extends State<NewHomePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Card(
-                        color: Color(0xFFD8B4A0),
-                        child: Container(
+                        color: const Color(0xFFD8B4A0),
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        elevation: 3,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15)),
+                        child: SizedBox(
+                          width: 182,
+                          height: 188,
                           child: Column(
                             children: [
-                              SizedBox(
-                                height: 20,
+
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Text(
+                                  "Govt Registration and Services",
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.lato(
+                                      fontSize: 20, fontWeight: FontWeight.bold),
+                                ),
                               ),
-                              Text(
-                                "Govt Registration and Services",
-                                textAlign: TextAlign.center,
-                                style: GoogleFonts.lato(
-                                    fontSize: 20, fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 20,
                               ),
                               Container(
                                 height: 100,
                                 width: 180,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     image: DecorationImage(
                                         image: AssetImage(
                                             "assets/card-image-5.png"),
@@ -297,13 +129,7 @@ class _NewHomePageState extends State<NewHomePage> {
                               ),
                             ],
                           ),
-                          width: 182,
-                          height: 188,
                         ),
-                        clipBehavior: Clip.antiAliasWithSaveLayer,
-                        elevation: 3,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15)),
                       ),
                       Card(
                         color: Color(0xffa0806c),
@@ -323,24 +149,6 @@ class _NewHomePageState extends State<NewHomePage> {
                                                 "assets/card-image-6.png"),
                                             fit: BoxFit.cover)),
                                   )),
-                              // Padding(
-                              //   padding: const EdgeInsets.all(8.0),
-                              //   child: Stack(
-                              //     children: [
-                              //       Container(
-                              //         height: 55,
-                              //         width: 100,
-                              //         decoration: BoxDecoration(
-                              //           image: DecorationImage(
-                              //             image: AssetImage("assets/card-image-2.png"),
-                              //             fit: BoxFit.cover
-                              //           )
-                              //         ),
-                              //       ),
-                              //       Container()
-                              //     ],
-                              //   ),
-                              // ),
                               Text(
                                 "Legal Help Centre",
                                 style: GoogleFonts.lato(
@@ -447,6 +255,23 @@ class HomeScreenCard extends StatelessWidget {
       ),
       elevation: 4,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(35)),
+    );
+  }
+}
+
+class FinalHomeScreenCard extends StatelessWidget {
+  const FinalHomeScreenCard({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      // color: Colors.black26,
+      child: Container(
+        height: 200,
+        width: 175,
+        decoration: BoxDecoration(color: Colors.blueGrey,borderRadius: BorderRadius.circular(20)),
+      ),
     );
   }
 }
