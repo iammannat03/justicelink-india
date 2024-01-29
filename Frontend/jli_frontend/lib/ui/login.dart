@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'home_page.dart';
+import 'final_home_page.dart';
+// import 'home_page.dart';
 import 'login_choose.dart';
 import 'new_home_page.dart';
 class LoginWithAadhaarPage extends StatefulWidget {
@@ -26,9 +27,39 @@ class _LoginWithAadhaarPageState extends State<LoginWithAadhaarPage> {
 
   @override
   Widget build(BuildContext context) {
+    Size screenSize = MediaQuery.of(context).size;
     return GestureDetector(
 
       child: Scaffold(
+        appBar: AppBar(
+          forceMaterialTransparency: true,
+          backgroundColor: Theme.of(context).colorScheme.primary,
+          toolbarHeight: screenSize.height * 0.06,
+          centerTitle: false,
+          title: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  'JusticeLink',
+                  style: GoogleFonts.italiana(
+                    color: Colors.black,
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  'INDIA',
+                  style: GoogleFonts.juliusSansOne(
+                    color: Colors.black,
+                    fontSize: 10,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
         // key: scaffoldKey,
         backgroundColor: Color.fromARGB(255, 216, 180, 160),
         body: SafeArea(
@@ -44,69 +75,6 @@ class _LoginWithAadhaarPageState extends State<LoginWithAadhaarPage> {
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Container(
-                    width: MediaQuery.sizeOf(context).width,
-                    height: 90,
-                    decoration: BoxDecoration(
-                      color: Color(0xFFD8B4A0),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Container(
-                          width: 49,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            color: Color(0xFFD8B4A0),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 5),
-                            child: GestureDetector(
-                              child: IconButton( icon: Icon(Icons.arrow_back),
-                                 onPressed: () {Navigator.of(context).push(
-                                   MaterialPageRoute(builder: (_) => LoginChoose()),
-                                 );},
-                              ),
-                            ),
-                          ),
-                        ),
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Align(
-                              alignment: AlignmentDirectional(-1.00, -1.00),
-                              child: Padding(
-                                padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 30, 20, 20),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      'JusticeLink',
-                                      style: GoogleFonts.italiana(
-                                        color: Colors.black,
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    Text(
-                                      'INDIA',
-                                      style: GoogleFonts.juliusSansOne(
-                                        color: Colors.black,
-                                        fontSize: 10,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 20),
                     child: Container(
@@ -119,7 +87,7 @@ class _LoginWithAadhaarPageState extends State<LoginWithAadhaarPage> {
                   ),
                   Container(
                     width: MediaQuery.sizeOf(context).width * 0.85,
-                    height: MediaQuery.sizeOf(context).height * 0.401,
+                    height: MediaQuery.sizeOf(context).height * 0.45,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(15),
@@ -127,7 +95,9 @@ class _LoginWithAadhaarPageState extends State<LoginWithAadhaarPage> {
                     child: Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(20, 15, 20, 0),
                       child: ListView(
+                        // physics: NeverScrollableScrollPhysics(),
                         padding: EdgeInsets.zero,
+
                         // scrollDirection: Axis.vertical,
                         children: [
                           Align(
@@ -261,7 +231,7 @@ class _LoginWithAadhaarPageState extends State<LoginWithAadhaarPage> {
                                     alignment: AlignmentDirectional(0.00, 0.00),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 10, 0, 0),
+                                          0, 15, 0, 0),
                                       child: JLIButton2(),
                                     ),
                                   ),
@@ -471,7 +441,7 @@ class JLIButton2 extends StatelessWidget {
         onPressed: () {
 // Navigate to the LoginChoose page
 //         Navigator.of(context).pop();
-          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context)=>NewHomePage()), (route) => false);
+          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context)=>FinalHomePage()), (route) => false);
 
 
           // loginUser();

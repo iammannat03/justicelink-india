@@ -20,4 +20,11 @@ dev_dependencies:
   flutter_lints: ^2.0.0
 
 flutter:
+  assets:
+    - assets/card-image-1.png
+    - assets/card-image-2.png
+    - assets/card-image-3.png
+    - assets/card-image-4.png
+    - assets/card-image-5.png
+    - assets/card-image-6.png
   uses-material-design: true

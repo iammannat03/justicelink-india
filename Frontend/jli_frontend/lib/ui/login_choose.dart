@@ -36,12 +36,12 @@ class LoginChoose extends StatelessWidget {
                       fontWeight: FontWeight.w900,
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     width: screenSize.width * 1,
-                    child: Row(
+                    child: const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Column(
+                        Column(
                           children: [
                             LoginWithCode(),
                             LoginWithFingerprint(),
