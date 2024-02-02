@@ -28,223 +28,220 @@ class _LoginWithAadhaarPageState extends State<LoginWithAadhaarPage> {
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
-    return GestureDetector(
-
-      child: Scaffold(
-        appBar: AppBar(
-          forceMaterialTransparency: true,
-          backgroundColor: Theme.of(context).colorScheme.primary,
-          toolbarHeight: screenSize.height * 0.06,
-          centerTitle: false,
-          title: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+    return Scaffold(
+      appBar: AppBar(
+        forceMaterialTransparency: true,
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        toolbarHeight: screenSize.height * 0.06,
+        centerTitle: false,
+        title: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                'JusticeLink',
+                style: GoogleFonts.italiana(
+                  color: Colors.black,
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                'INDIA',
+                style: GoogleFonts.juliusSansOne(
+                  color: Colors.black,
+                  fontSize: 10,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      // key: scaffoldKey,
+      backgroundColor: Color.fromARGB(255, 216, 180, 160),
+      body: SafeArea(
+        top: true,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Container(
+            width: MediaQuery.sizeOf(context).width,
+            height: MediaQuery.sizeOf(context).height * 1,
+            decoration: BoxDecoration(
+              color: Color(0xFFD8B4A0),
+            ),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
               children: [
-                Text(
-                  'JusticeLink',
-                  style: GoogleFonts.italiana(
-                    color: Colors.black,
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 20),
+                  child: Container(
+                    width: MediaQuery.sizeOf(context).width,
+                    height: 69,
+                    decoration: BoxDecoration(
+                      color: Color(0xFFD8B4A0),
+                    ),
                   ),
                 ),
-                Text(
-                  'INDIA',
-                  style: GoogleFonts.juliusSansOne(
-                    color: Colors.black,
-                    fontSize: 10,
+                Container(
+                  width: MediaQuery.sizeOf(context).width * 0.85,
+                  height: MediaQuery.sizeOf(context).height * 0.45,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(20, 15, 20, 0),
+                    child: ListView(
+                      // physics: NeverScrollableScrollPhysics(),
+                      padding: EdgeInsets.zero,
+
+                      // scrollDirection: Axis.vertical,
+                      children: [
+                        Align(
+                          alignment: AlignmentDirectional(0.00, 0.00),
+                          child: Text(
+                            'LOGIN',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontFamily: 'Julius Sans One',
+                              fontSize: 35,
+                              letterSpacing: 6,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: 100,
+                          height: 280,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                          ),
+                          child: Padding(
+                            padding:
+                            EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 0, 0, 10),
+                                  child: TextFormField(
+                                    controller: aadharController,
+                                      keyboardType: TextInputType.number,
+                                    maxLength: 12,
+
+                                    // controller: _model.textController1,
+                                    autofocus: true,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelText: 'Enter Aadhaar Id',
+                                      labelStyle: TextStyle(),
+                                      // hintStyle: FlutterFlowTheme.of(context)
+                                      //     .labelMedium,
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                          width: 2,
+                                        ),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                          width: 2,
+                                        ),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      errorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                          width: 2,
+                                        ),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      focusedErrorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                          width: 2,
+                                        ),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      filled: true,
+                                    ),
+                                    // style: ,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 0, 0, 0),
+                                  child: TextFormField(
+                                    controller: otpController,
+                                    keyboardType: TextInputType.number,
+                                    // controller: _model.textController2,
+                                    autofocus: true,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelText: 'Enter OTP recieved',
+                                      // labelStyle: FlutterFlowTheme.of(context)
+                                      //     .labelMedium,
+                                      // hintStyle: FlutterFlowTheme.of(context)
+                                      //     .labelMedium,
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                          width: 2,
+                                        ),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                          width: 2,
+                                        ),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      errorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                          width: 2,
+                                        ),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      focusedErrorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                          width: 2,
+                                        ),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      filled: true,
+                                    ),
+                                    // style:
+                                    // FlutterFlowTheme.of(context).bodyMedium,
+                                    // validator: _model.textController2Validator
+                                    //     .asValidator(context),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional(0.00, 0.00),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 15, 0, 0),
+                                    child: JLIButton2(),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
-            ),
-          ),
-        ),
-        // key: scaffoldKey,
-        backgroundColor: Color.fromARGB(255, 216, 180, 160),
-        body: SafeArea(
-          top: true,
-          child: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Container(
-              width: MediaQuery.sizeOf(context).width,
-              height: MediaQuery.sizeOf(context).height * 1,
-              decoration: BoxDecoration(
-                color: Color(0xFFD8B4A0),
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 20),
-                    child: Container(
-                      width: MediaQuery.sizeOf(context).width,
-                      height: 69,
-                      decoration: BoxDecoration(
-                        color: Color(0xFFD8B4A0),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    width: MediaQuery.sizeOf(context).width * 0.85,
-                    height: MediaQuery.sizeOf(context).height * 0.45,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(20, 15, 20, 0),
-                      child: ListView(
-                        // physics: NeverScrollableScrollPhysics(),
-                        padding: EdgeInsets.zero,
-
-                        // scrollDirection: Axis.vertical,
-                        children: [
-                          Align(
-                            alignment: AlignmentDirectional(0.00, 0.00),
-                            child: Text(
-                              'LOGIN',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontFamily: 'Julius Sans One',
-                                fontSize: 35,
-                                letterSpacing: 6,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                          Container(
-                            width: 100,
-                            height: 280,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                            ),
-                            child: Padding(
-                              padding:
-                              EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 0, 0, 10),
-                                    child: TextFormField(
-                                      controller: aadharController,
-                                        keyboardType: TextInputType.number,
-                                      maxLength: 12,
-
-                                      // controller: _model.textController1,
-                                      autofocus: true,
-                                      obscureText: false,
-                                      decoration: InputDecoration(
-                                        labelText: 'Enter Aadhaar Id',
-                                        labelStyle: TextStyle(),
-                                        // hintStyle: FlutterFlowTheme.of(context)
-                                        //     .labelMedium,
-                                        enabledBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Colors.white,
-                                            width: 2,
-                                          ),
-                                          borderRadius: BorderRadius.circular(8),
-                                        ),
-                                        focusedBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Colors.white,
-                                            width: 2,
-                                          ),
-                                          borderRadius: BorderRadius.circular(8),
-                                        ),
-                                        errorBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Colors.white,
-                                            width: 2,
-                                          ),
-                                          borderRadius: BorderRadius.circular(8),
-                                        ),
-                                        focusedErrorBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Colors.white,
-                                            width: 2,
-                                          ),
-                                          borderRadius: BorderRadius.circular(8),
-                                        ),
-                                        filled: true,
-                                      ),
-                                      // style: ,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 0, 0, 0),
-                                    child: TextFormField(
-                                      controller: otpController,
-                                      keyboardType: TextInputType.number,
-                                      // controller: _model.textController2,
-                                      autofocus: true,
-                                      obscureText: false,
-                                      decoration: InputDecoration(
-                                        labelText: 'Enter OTP recieved',
-                                        // labelStyle: FlutterFlowTheme.of(context)
-                                        //     .labelMedium,
-                                        // hintStyle: FlutterFlowTheme.of(context)
-                                        //     .labelMedium,
-                                        enabledBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Colors.white,
-                                            width: 2,
-                                          ),
-                                          borderRadius: BorderRadius.circular(8),
-                                        ),
-                                        focusedBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Colors.white,
-                                            width: 2,
-                                          ),
-                                          borderRadius: BorderRadius.circular(8),
-                                        ),
-                                        errorBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Colors.white,
-                                            width: 2,
-                                          ),
-                                          borderRadius: BorderRadius.circular(8),
-                                        ),
-                                        focusedErrorBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Colors.white,
-                                            width: 2,
-                                          ),
-                                          borderRadius: BorderRadius.circular(8),
-                                        ),
-                                        filled: true,
-                                      ),
-                                      // style:
-                                      // FlutterFlowTheme.of(context).bodyMedium,
-                                      // validator: _model.textController2Validator
-                                      //     .asValidator(context),
-                                    ),
-                                  ),
-                                  Align(
-                                    alignment: AlignmentDirectional(0.00, 0.00),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 15, 0, 0),
-                                      child: JLIButton2(),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
             ),
           ),
         ),
@@ -265,164 +262,132 @@ class LoginWithFingerprintPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      // onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
-      child: Scaffold(
-        // key: scaffoldKey,
-        backgroundColor: Colors.white,
-        body: SafeArea(
-          top: true,
-          child: Container(
-            width: MediaQuery.sizeOf(context).width,
-            height: MediaQuery.sizeOf(context).height * 1,
-            decoration: BoxDecoration(
-              color: Color(0xFFD8B4A0),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Container(
+    Size screenSize = MediaQuery.of(context).size;
+    return Scaffold(
+      appBar: AppBar(
+        // forceMaterialTransparency: true,
+        backgroundColor: Color(0xFFD8B4A0),
+        toolbarHeight: screenSize.height * 0.06,
+        centerTitle: false,
+        title: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                'JusticeLink',
+                style: GoogleFonts.italiana(
+                  color: Colors.black,
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                'INDIA',
+                style: GoogleFonts.juliusSansOne(
+                  color: Colors.black,
+                  fontSize: 10,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      // key: scaffoldKey,
+      // backgroundColor: Colors.white,
+      body: SafeArea(
+        top: true,
+        child: Container(
+          width: MediaQuery.sizeOf(context).width,
+          height: MediaQuery.sizeOf(context).height * 1,
+          decoration: BoxDecoration(
+            color: Color(0xFFD8B4A0),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 20),
+                child: Container(
                   width: MediaQuery.sizeOf(context).width,
-                  height: 90,
+                  height: 69,
                   decoration: BoxDecoration(
                     color: Color(0xFFD8B4A0),
                   ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
+                ),
+              ),
+              Container(
+                width: MediaQuery.sizeOf(context).width * 0.85,
+                height: MediaQuery.sizeOf(context).height * 0.45,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 20),
+                  child: ListView(
+                    padding: EdgeInsets.zero,
+                    scrollDirection: Axis.vertical,
                     children: [
-                      Container(
-                        width: 49,
-                        height: 100,
-                        decoration: BoxDecoration(
-                          color: Color(0xFFD8B4A0),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 5),
-                          child: Icon(
-                            Icons.arrow_back,
-                            size: 24,
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(8, 50, 8, 8),
+                        child: Text(
+                          'LOGIN',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontFamily: 'Julius Sans One',
+                            fontSize: 35,
+                            letterSpacing: 6,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
                       ),
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Align(
-                            alignment: AlignmentDirectional(-1.00, -1.00),
-                            child: Padding(
-                              padding:
-                              EdgeInsetsDirectional.fromSTEB(0, 30, 20, 20),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'JusticeLink',
-                                    style: GoogleFonts.italiana(
-                                      color: Colors.black,
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Text(
-                                    'INDIA',
-                                    style: GoogleFonts.juliusSansOne(
-                                      color:Colors.black,
-                                      fontSize: 10,
-                                    ),
-                                  ),
-                                ],
+                      Container(
+                        width: 100,
+                        height: 168,
+                        decoration: BoxDecoration(
+                          color:
+                          Colors.white,
+                        ),
+                        child: Padding(
+                          padding:
+                          EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Align(
+                                alignment: AlignmentDirectional(0.00, 0.00),
+                                child: Icon(
+                                  Icons.fingerprint_rounded,
+                                  color: Colors.black,
+                                  size: 70,
+                                ),
                               ),
-                            ),
+                              Align(
+                                alignment: AlignmentDirectional(0.00, 0.00),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      10, 10, 10, 10),
+                                  child: Text(
+                                    'Login using fingerprint',
+                                    style: TextStyle(
+
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
                     ],
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 20),
-                  child: Container(
-                    width: MediaQuery.sizeOf(context).width,
-                    height: 69,
-                    decoration: BoxDecoration(
-                      color: Color(0xFFD8B4A0),
-                    ),
-                  ),
-                ),
-                Container(
-                  width: MediaQuery.sizeOf(context).width * 0.85,
-                  height: MediaQuery.sizeOf(context).height * 0.305,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 20),
-                    child: ListView(
-                      padding: EdgeInsets.zero,
-                      scrollDirection: Axis.vertical,
-                      children: [
-                        Align(
-                          alignment: AlignmentDirectional(0.00, 0.00),
-                          child: Text(
-                            'LOGIN',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontFamily: 'Julius Sans One',
-                              fontSize: 35,
-                              letterSpacing: 6,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: 100,
-                          height: 168,
-                          decoration: BoxDecoration(
-                            color:
-                            Colors.white,
-                          ),
-                          child: Padding(
-                            padding:
-                            EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Align(
-                                  alignment: AlignmentDirectional(0.00, 0.00),
-                                  child: Icon(
-                                    Icons.fingerprint_rounded,
-                                    color: Colors.black,
-                                    size: 70,
-                                  ),
-                                ),
-                                Align(
-                                  alignment: AlignmentDirectional(0.00, 0.00),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        10, 10, 10, 10),
-                                    child: Text(
-                                      'Login using fingerprint',
-                                      style: TextStyle(
-
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
