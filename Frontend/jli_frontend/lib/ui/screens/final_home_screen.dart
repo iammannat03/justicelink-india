@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jli_frontend/ui/connect_page.dart';
-import 'package:jli_frontend/ui/new_home_page.dart';
-import 'package:jli_frontend/ui/profile_page.dart';
-import 'package:jli_frontend/ui/user_profile_page.dart';
+import 'package:jli_frontend/ui/screens/connect_screen.dart';
+import 'package:jli_frontend/ui/screens/home_screen.dart';
+import 'package:jli_frontend/ui/screens/user_profile_screen.dart';
 
-import 'messages_page.dart';
+import 'messages_screen.dart';
 
-class FinalHomePage extends StatefulWidget {
-  const FinalHomePage({super.key});
+class FinalHomeScreen extends StatefulWidget {
+  const FinalHomeScreen({super.key});
 
   @override
-  State<FinalHomePage> createState() => _FinalHomePageState();
+  State<FinalHomeScreen> createState() => _FinalHomeScreenState();
 }
 
-class _FinalHomePageState extends State<FinalHomePage> {
+class _FinalHomeScreenState extends State<FinalHomeScreen> {
 
-  List<Widget> pages_body = [NewHomePage(),ConnectPage(),MessagesPage(),UserProfilePage()];
-  Widget currentPage = NewHomePage();
+  List<Widget> pages_body = [const HomeScreen(),const ConnectScreen(),const MessagesPage(),const UserProfileScreen()];
+  Widget currentPage = const HomeScreen();
   int currentIndex = 0;
   void onTap(int index){
     setState(() {
@@ -77,7 +76,7 @@ class _FinalHomePageState extends State<FinalHomePage> {
           ),
           IconButton(
             onPressed: () {},
-            icon: Icon(Icons.menu_rounded, color: Colors.black),
+            icon: const Icon(Icons.menu_rounded, color: Colors.black),
           ),
           const SizedBox(
             width: 20,
@@ -97,7 +96,7 @@ class _FinalHomePageState extends State<FinalHomePage> {
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home_rounded,),label: "Home"),
           BottomNavigationBarItem(icon: Icon(Icons.near_me_rounded,),label: "Nearby Aid"),
-          BottomNavigationBarItem(icon: Icon(Icons.message_rounded,),label: "Messages"),
+          BottomNavigationBarItem(icon: Icon(Icons.message_rounded,),label: "Connect"),
           BottomNavigationBarItem(icon: Icon(Icons.person,),label: "Profile"),
         ],
 

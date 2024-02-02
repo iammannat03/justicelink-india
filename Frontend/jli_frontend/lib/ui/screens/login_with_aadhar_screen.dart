@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../utils/login_to_home_screen_button.dart';
 
-import 'final_home_page.dart';
-// import 'home_page.dart';
-import 'login_choose.dart';
-import 'new_home_page.dart';
-class LoginWithAadhaarPage extends StatefulWidget {
-  LoginWithAadhaarPage({super.key});
+class LoginWithAadhaarScreen extends StatefulWidget {
+  const LoginWithAadhaarScreen({super.key});
 
   @override
-  State<LoginWithAadhaarPage> createState() => _LoginWithAadhaarPageState();
+  State<LoginWithAadhaarScreen> createState() => _LoginWithAadhaarScreenState();
 }
 
-class _LoginWithAadhaarPageState extends State<LoginWithAadhaarPage> {
+class _LoginWithAadhaarScreenState extends State<LoginWithAadhaarScreen> {
 
   void loginUser() async{
     if(aadharController.text.isNotEmpty && otpController.text.isNotEmpty){
@@ -59,7 +56,7 @@ class _LoginWithAadhaarPageState extends State<LoginWithAadhaarPage> {
         ),
       ),
       // key: scaffoldKey,
-      backgroundColor: Color.fromARGB(255, 216, 180, 160),
+      backgroundColor: const Color.fromARGB(255, 216, 180, 160),
       body: SafeArea(
         top: true,
         child: SingleChildScrollView(
@@ -67,18 +64,18 @@ class _LoginWithAadhaarPageState extends State<LoginWithAadhaarPage> {
           child: Container(
             width: MediaQuery.sizeOf(context).width,
             height: MediaQuery.sizeOf(context).height * 1,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Color(0xFFD8B4A0),
             ),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 20),
+                  padding: const EdgeInsetsDirectional.fromSTEB(20, 20, 20, 20),
                   child: Container(
                     width: MediaQuery.sizeOf(context).width,
                     height: 69,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Color(0xFFD8B4A0),
                     ),
                   ),
@@ -91,14 +88,14 @@ class _LoginWithAadhaarPageState extends State<LoginWithAadhaarPage> {
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(20, 15, 20, 0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(20, 15, 20, 0),
                     child: ListView(
                       // physics: NeverScrollableScrollPhysics(),
                       padding: EdgeInsets.zero,
 
                       // scrollDirection: Axis.vertical,
                       children: [
-                        Align(
+                        const Align(
                           alignment: AlignmentDirectional(0.00, 0.00),
                           child: Text(
                             'LOGIN',
@@ -114,23 +111,23 @@ class _LoginWithAadhaarPageState extends State<LoginWithAadhaarPage> {
                         Container(
                           width: 100,
                           height: 280,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Colors.white,
                           ),
                           child: Padding(
                             padding:
-                            EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
+                            const EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 0, 10),
                                   child: TextFormField(
                                     controller: aadharController,
-                                      keyboardType: TextInputType.number,
+                                    keyboardType: TextInputType.number,
                                     maxLength: 12,
 
                                     // controller: _model.textController1,
@@ -138,32 +135,32 @@ class _LoginWithAadhaarPageState extends State<LoginWithAadhaarPage> {
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelText: 'Enter Aadhaar Id',
-                                      labelStyle: TextStyle(),
+                                      labelStyle: const TextStyle(),
                                       // hintStyle: FlutterFlowTheme.of(context)
                                       //     .labelMedium,
                                       enabledBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Colors.white,
                                           width: 2,
                                         ),
                                         borderRadius: BorderRadius.circular(8),
                                       ),
                                       focusedBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Colors.white,
                                           width: 2,
                                         ),
                                         borderRadius: BorderRadius.circular(8),
                                       ),
                                       errorBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Colors.white,
                                           width: 2,
                                         ),
                                         borderRadius: BorderRadius.circular(8),
                                       ),
                                       focusedErrorBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Colors.white,
                                           width: 2,
                                         ),
@@ -175,7 +172,7 @@ class _LoginWithAadhaarPageState extends State<LoginWithAadhaarPage> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 0, 0),
                                   child: TextFormField(
                                     controller: otpController,
@@ -190,28 +187,28 @@ class _LoginWithAadhaarPageState extends State<LoginWithAadhaarPage> {
                                       // hintStyle: FlutterFlowTheme.of(context)
                                       //     .labelMedium,
                                       enabledBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Colors.white,
                                           width: 2,
                                         ),
                                         borderRadius: BorderRadius.circular(8),
                                       ),
                                       focusedBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Colors.white,
                                           width: 2,
                                         ),
                                         borderRadius: BorderRadius.circular(8),
                                       ),
                                       errorBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Colors.white,
                                           width: 2,
                                         ),
                                         borderRadius: BorderRadius.circular(8),
                                       ),
                                       focusedErrorBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Colors.white,
                                           width: 2,
                                         ),
@@ -225,12 +222,12 @@ class _LoginWithAadhaarPageState extends State<LoginWithAadhaarPage> {
                                     //     .asValidator(context),
                                   ),
                                 ),
-                                Align(
+                                const Align(
                                   alignment: AlignmentDirectional(0.00, 0.00),
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 15, 0, 0),
-                                    child: JLIButton2(),
+                                    child: LoginToHomeScreenButton(),
                                   ),
                                 ),
                               ],
@@ -246,187 +243,6 @@ class _LoginWithAadhaarPageState extends State<LoginWithAadhaarPage> {
           ),
         ),
       ),
-    );
-  }
-}
-// class LoginWithOTPPage extends StatelessWidget {
-//   const LoginWithOTPPage({super.key});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return const Placeholder();
-//   }
-// }
-class LoginWithFingerprintPage extends StatelessWidget {
-  const LoginWithFingerprintPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    Size screenSize = MediaQuery.of(context).size;
-    return Scaffold(
-      appBar: AppBar(
-        // forceMaterialTransparency: true,
-        backgroundColor: Color(0xFFD8B4A0),
-        toolbarHeight: screenSize.height * 0.06,
-        centerTitle: false,
-        title: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                'JusticeLink',
-                style: GoogleFonts.italiana(
-                  color: Colors.black,
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                'INDIA',
-                style: GoogleFonts.juliusSansOne(
-                  color: Colors.black,
-                  fontSize: 10,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-      // key: scaffoldKey,
-      // backgroundColor: Colors.white,
-      body: SafeArea(
-        top: true,
-        child: Container(
-          width: MediaQuery.sizeOf(context).width,
-          height: MediaQuery.sizeOf(context).height * 1,
-          decoration: BoxDecoration(
-            color: Color(0xFFD8B4A0),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 20),
-                child: Container(
-                  width: MediaQuery.sizeOf(context).width,
-                  height: 69,
-                  decoration: BoxDecoration(
-                    color: Color(0xFFD8B4A0),
-                  ),
-                ),
-              ),
-              Container(
-                width: MediaQuery.sizeOf(context).width * 0.85,
-                height: MediaQuery.sizeOf(context).height * 0.45,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 20),
-                  child: ListView(
-                    padding: EdgeInsets.zero,
-                    scrollDirection: Axis.vertical,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(8, 50, 8, 8),
-                        child: Text(
-                          'LOGIN',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontFamily: 'Julius Sans One',
-                            fontSize: 35,
-                            letterSpacing: 6,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        width: 100,
-                        height: 168,
-                        decoration: BoxDecoration(
-                          color:
-                          Colors.white,
-                        ),
-                        child: Padding(
-                          padding:
-                          EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Align(
-                                alignment: AlignmentDirectional(0.00, 0.00),
-                                child: Icon(
-                                  Icons.fingerprint_rounded,
-                                  color: Colors.black,
-                                  size: 70,
-                                ),
-                              ),
-                              Align(
-                                alignment: AlignmentDirectional(0.00, 0.00),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      10, 10, 10, 10),
-                                  child: Text(
-                                    'Login using fingerprint',
-                                    style: TextStyle(
-
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-class JLIButton2 extends StatelessWidget {
-  const JLIButton2({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(30, 12, 30, 12),
-
-      child: ElevatedButton(
-        onPressed: () {
-// Navigate to the LoginChoose page
-//         Navigator.of(context).pop();
-          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context)=>FinalHomePage()), (route) => false);
-
-
-          // loginUser();
-        },
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 0, 0, 0)),
-          elevation: MaterialStateProperty.all(10.0),
-          shape: MaterialStateProperty.all(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15),
-              side: BorderSide(color: Colors.black, width: 1),
-            ),
-          ),
-          minimumSize: MaterialStateProperty.all(Size(55, 55)),
-        ),
-        child: Text("Log in",
-          style: GoogleFonts.openSans(),
-        )
-      ),
-
     );
   }
 }

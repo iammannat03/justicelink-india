@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'login_choose.dart'; // Import the LoginChoose page
+import '../utils/choose_language_button.dart';
 
-class ChooseLangPage extends StatelessWidget {
-  const ChooseLangPage({super.key});
+class ChooseLanguageScreen extends StatelessWidget {
+  const ChooseLanguageScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -84,55 +84,55 @@ class ChooseLangPage extends StatelessWidget {
                     padding: EdgeInsets.zero,
                     scrollDirection: Axis.vertical,
                     children: const [
-                      JLIButton1(
+                      ChooseLanguageButton(
                         lang: 'English',
                       ),
-                      JLIButton1(
+                      ChooseLanguageButton(
                         lang: 'हिन्दी',
                       ), //hindi
-                      JLIButton1(
+                      ChooseLanguageButton(
                         lang: 'বাংলা',
                       ), //bengali
-                      JLIButton1(
+                      ChooseLanguageButton(
                         lang: 'ગુજરાતી',
                       ), //gujarati
-                      JLIButton1(
+                      ChooseLanguageButton(
                         lang: 'தமிழ்',
                       ), //tamil
-                      JLIButton1(
+                      ChooseLanguageButton(
                         lang: 'తెలుగు',
                       ), //telugu
-                      JLIButton1(
+                      ChooseLanguageButton(
                         lang: 'मराठी',
                       ), //marathi
-                      JLIButton1(
+                      ChooseLanguageButton(
                         lang: 'ಕನ್ನಡ',
                       ), //kannada
-                      JLIButton1(
+                      ChooseLanguageButton(
                         lang: 'മലയാളം',
                       ), //malayalam
-                      JLIButton1(
+                      ChooseLanguageButton(
                         lang: '',
                       ),
-                      JLIButton1(
+                      ChooseLanguageButton(
                         lang: '',
                       ),
-                      JLIButton1(
+                      ChooseLanguageButton(
                         lang: '',
                       ),
-                      JLIButton1(
+                      ChooseLanguageButton(
                         lang: '',
                       ),
-                      JLIButton1(
+                      ChooseLanguageButton(
                         lang: '',
                       ),
-                      JLIButton1(
+                      ChooseLanguageButton(
                         lang: '',
                       ),
-                      JLIButton1(
+                      ChooseLanguageButton(
                         lang: '',
                       ),
-                      JLIButton1(
+                      ChooseLanguageButton(
                         lang: '',
                       ),
                     ],
@@ -147,35 +147,4 @@ class ChooseLangPage extends StatelessWidget {
   }
 }
 
-class JLIButton1 extends StatelessWidget {
-  const JLIButton1({super.key, required this.lang});
-  final String lang;
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(30, 12, 30, 12),
-      child: ElevatedButton(
-          onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(builder: (_) => LoginChoose()),
-            );
-          },
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(
-                const Color.fromARGB(255, 237, 235, 235)),
-            elevation: MaterialStateProperty.all(10.0),
-            shape: MaterialStateProperty.all(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-                side: const BorderSide(color: Colors.white, width: 1),
-              ),
-            ),
-            minimumSize: MaterialStateProperty.all(const Size(55, 55)),
-          ),
-          child: Text(
-            lang,
-            style: GoogleFonts.lato(fontSize: 20, color: Colors.black),
-          )),
-    );
-  }
-}
+
