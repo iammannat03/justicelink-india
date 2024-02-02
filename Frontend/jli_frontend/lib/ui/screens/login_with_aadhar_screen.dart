@@ -56,7 +56,7 @@ class _LoginWithAadhaarScreenState extends State<LoginWithAadhaarScreen> {
         ),
       ),
       // key: scaffoldKey,
-      backgroundColor: const Color.fromARGB(255, 216, 180, 160),
+      backgroundColor: Theme.of(context).colorScheme.primary,
       body: SafeArea(
         top: true,
         child: SingleChildScrollView(
@@ -64,8 +64,8 @@ class _LoginWithAadhaarScreenState extends State<LoginWithAadhaarScreen> {
           child: Container(
             width: MediaQuery.sizeOf(context).width,
             height: MediaQuery.sizeOf(context).height * 1,
-            decoration: const BoxDecoration(
-              color: Color(0xFFD8B4A0),
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.primary,
             ),
             child: Column(
               mainAxisSize: MainAxisSize.max,
@@ -75,8 +75,8 @@ class _LoginWithAadhaarScreenState extends State<LoginWithAadhaarScreen> {
                   child: Container(
                     width: MediaQuery.sizeOf(context).width,
                     height: 69,
-                    decoration: const BoxDecoration(
-                      color: Color(0xFFD8B4A0),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.primary,
                     ),
                   ),
                 ),

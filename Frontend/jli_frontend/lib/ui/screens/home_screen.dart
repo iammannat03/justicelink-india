@@ -89,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Card(
-                      color: const Color(0xFFD8B4A0),
+                      color: Theme.of(context).colorScheme.primary,
                       clipBehavior: Clip.antiAliasWithSaveLayer,
                       elevation: 3,
                       shape: RoundedRectangleBorder(
@@ -171,7 +171,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
                 Card(
-                  color: const Color(0xFFD8B4A0),
+                  color: Theme.of(context).colorScheme.primary,
                   clipBehavior: Clip.antiAliasWithSaveLayer,
                   elevation: 3,
                   shape: RoundedRectangleBorder(
