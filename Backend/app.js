@@ -1,28 +1,40 @@
-require("dotenv").config();
-
-const express = require("express");
-const app = express();
-const { GoogleGenerativeAI } = require("@google/generative-ai");
-const genAI = new GoogleGenerativeAI(process.env.API_KEY);
-
-async function run() {
-  // For text-only input, use the gemini-pro model
-  const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-
-  const prompt = "what did i ask you previously";
-
-  const result = await model.generateContent(prompt);
-  const response = await result.response;
-  const text = response.text();
-  console.log(text);
+// adding the path for environment variable file
+if (process.env.NODE_ENV != "production") {
+  require("dotenv").config();
 }
 
-run();
+// importing all the installed packages
+const express = require("express");
+const app = express();
+const run = require("./utils/gemini");
+const mongoose = require("mongoose");
+const path = require("path");
 
+// importing the models
+const AiResModel = require("./models/ai_response");
+const ChatModel = require("./models/chat");
+
+// setting engines and paths
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
+// database setup
+main()
+  .then(() => {
+    console.log("DB connection is successful!");
+  })
+  .catch((err) => console.log(err));
+
+async function main() {
+  await mongoose.connect("mongodb://127.0.0.1:27017/jli");
+}
+
+// app routes
 app.get("/", (req, res) => {
-  res.send("Welcome to Justice Link");
+  res.render("root.ejs");
 });
 
+// app.listen()
 app.listen(8080, () => {
   console.log("app is listening on port 8080");
 });
