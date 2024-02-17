@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jli_frontend/ui/screens/connect_screen.dart';
-import 'package:jli_frontend/ui/screens/home_screen.dart';
-import 'package:jli_frontend/ui/screens/user_profile_screen.dart';
+import 'package:jli_frontend/ui/screens/home/prisoners/connect_screen.dart';
+import 'package:jli_frontend/ui/screens/home/prisoners/home_screen.dart';
+import 'package:jli_frontend/ui/screens/home/prisoners/user_profile_screen.dart';
 
 import 'messages_screen.dart';
 

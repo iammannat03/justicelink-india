@@ -48,7 +48,7 @@ class LoginChooseScreen extends StatelessWidget {
                 TextButton(
                   onPressed: () {
                     Navigator.of(context).push(
-                      MaterialPageRoute(builder: (_) => const SignupScreen()),
+                      MaterialPageRoute(builder: (_) => const SignupScreen(user: '',)),
                     );
                   },
                   child: Text(
