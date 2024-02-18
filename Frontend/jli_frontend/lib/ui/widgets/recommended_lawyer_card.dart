@@ -8,7 +8,9 @@ class RecommendedLawyerCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){},
+      onTap: (){
+        print('pressed');
+      },
       child: Card(
         child: Container(
           padding: EdgeInsets.all(8),
