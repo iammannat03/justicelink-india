@@ -1,3 +1,4 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:jli_frontend/ui/widgets/message_card.dart';
@@ -12,7 +13,6 @@ class MessagesScreen extends StatefulWidget {
 }
 
 class _MessagesScreenState extends State<MessagesScreen> {
-  final TextEditingController _controller = TextEditingController();
   final List<Message> messagesList = [
     const Message(message: 'Good morning, Mr.U', user: 'lawyer'),
     const Message(message: 'This is Priya from Legal Ac.', user: 'lawyer'),
@@ -36,13 +36,38 @@ class _MessagesScreenState extends State<MessagesScreen> {
   ];
 
   final TextEditingController _messageController = TextEditingController();
+  final ScrollController _scrollController = ScrollController();
+  FilePickerResult? result;
+  List<PlatformFile>? files;
   void _addMessage(String message){
 
     setState(() {
       messagesList.add(Message(message: message, user: 'prisoner'));
       _messageController.clear();
-    });
 
+    });
+    if(!_scrollController.hasClients) return;
+
+    _scrollController.animateTo(
+      1000,
+      duration: Duration(milliseconds: 500),
+      curve: Curves.ease,
+    );
+  }
+  void _sendFile(List<PlatformFile> files){
+    setState(() {
+
+      messagesList.add(Message(message: '', user: 'prisoner', files: files));
+      _messageController.clear();
+
+    });
+    if(!_scrollController.hasClients) return;
+
+    _scrollController.animateTo(
+      1000,
+      duration: Duration(milliseconds: 500),
+      curve: Curves.ease,
+    );
   }
   @override
   Widget build(BuildContext context) {
@@ -80,9 +105,21 @@ class _MessagesScreenState extends State<MessagesScreen> {
               Spacer(),
               IconButton(icon: const Icon(Ionicons.folder_open_outline,color: Color.fromARGB(
                   255, 208, 192, 192),),
-                onPressed: () {},),
+                onPressed: () async {
+                result = await FilePicker.platform.pickFiles();
+                if(result!=null){
+                  files = result!.files;
+                  if (files!.isNotEmpty){
+                    _messageController.text = files!.first.name;
+                  } else {
+
+                  }
+                } else {
+
+                }
+                },),
               SizedBox(width: 5,),
-              IconButton(onPressed: ()=>_addMessage(_messageController.text), icon: const Icon(Ionicons.send),color: Color.fromARGB(
+              IconButton(onPressed: ()=>result==null?_addMessage(_messageController.text):_sendFile(files!), icon: const Icon(Ionicons.send),color: Color.fromARGB(
                   255, 208, 192, 192),)
             ],
           ),
@@ -92,11 +129,15 @@ class _MessagesScreenState extends State<MessagesScreen> {
       body: Container(
         height: MediaQuery.sizeOf(context).height*0.72,
         child: ListView.builder(
+          controller: _scrollController,
+
+
           itemCount: messagesList.length,
           itemBuilder: (BuildContext context, int index) {
             return MessageCard(
                 message: messagesList[index], user: messagesList[index].user);
           },
+
         ),
       ),
     );
