@@ -13,7 +13,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "JusticeLink India",
       theme: ThemeData(
+
         colorScheme: ColorScheme.fromSeed(
+
           seedColor: const Color.fromARGB(255, 216, 180, 160),
           primary: const Color.fromARGB(255, 216, 180, 160),
           // secondary: ,

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jli_frontend/ui/screens/home/general/general_home_screen.dart';
+import 'package:jli_frontend/ui/utils/login_to_home_screen_button.dart';
 
 class GLoginWithAadharScreen extends StatefulWidget {
   const GLoginWithAadharScreen({super.key});
@@ -217,7 +219,7 @@ class _GLoginWithAadharScreenState extends State<GLoginWithAadharScreen> {
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 15, 0, 0),
-                                    child: LoginToHomeScreenButton(),
+                                    child: LoginToHomeScreenButton(user: 'general'),
                                   ),
                                 ),
                               ],

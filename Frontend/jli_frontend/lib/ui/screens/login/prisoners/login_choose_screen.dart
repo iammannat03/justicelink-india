@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jli_frontend/ui/screens/signup_screen.dart';
-import '../utils/login_with_aadhar_button.dart';
-import '../utils/login_with_fingerprint_button.dart';
+import 'package:jli_frontend/ui/screens/signup/signup_screen.dart';
+import '../../../utils/login_with_aadhar_button.dart';
+import '../../../utils/login_with_fingerprint_button.dart';
 
 class LoginChooseScreen extends StatelessWidget {
   const LoginChooseScreen({super.key});
@@ -11,6 +11,35 @@ class LoginChooseScreen extends StatelessWidget {
     Size screenSize = MediaQuery.of(context).size;
 
     return Scaffold(
+      appBar: AppBar(
+        forceMaterialTransparency: true,
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        toolbarHeight: screenSize.height * 0.06,
+        centerTitle: false,
+        title: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                'JusticeLink',
+                style: GoogleFonts.italiana(
+                  color: Colors.black,
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                'INDIA',
+                style: GoogleFonts.juliusSansOne(
+                  color: Colors.black,
+                  fontSize: 10,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
       backgroundColor: Theme.of(context).colorScheme.primary,
       body: SafeArea(
         // top: true,
@@ -45,20 +74,7 @@ class LoginChooseScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(builder: (_) => const SignupScreen(user: '',)),
-                    );
-                  },
-                  child: Text(
-                    'New user? Click here to <sign up>',
-                    style: GoogleFonts.lato(
-                      fontSize: 15,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
+
               ],
             ),
           ],

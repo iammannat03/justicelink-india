@@ -12,6 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   google_fonts: ^6.1.0
+  ionicons: ^0.2.2
 
 dev_dependencies:
   flutter_test:
@@ -27,4 +28,13 @@ flutter:
     - assets/card-image-4.png
     - assets/card-image-5.png
     - assets/card-image-6.png
+    - assets/lawyer_face.png
+    - assets/lawyer_image_2.png
+    - assets/lawyer_image_3.png
+    - assets/action.png
+    - assets/logo.png
+    - assets/actual.jpg
+    - assets/user_profile.jpeg
+    - assets/user_final.png
+
   uses-material-design: true

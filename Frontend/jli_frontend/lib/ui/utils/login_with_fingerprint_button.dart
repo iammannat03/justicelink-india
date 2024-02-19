@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../screens/login_with_fingerprint_screen.dart';
+import '../screens/login/prisoners/login_with_fingerprint_screen.dart';
 
 class LoginWithFingerprintButton extends StatelessWidget {
   const LoginWithFingerprintButton({super.key});

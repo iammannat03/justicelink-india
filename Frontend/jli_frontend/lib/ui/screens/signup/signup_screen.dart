@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jli_frontend/ui/screens/home/general/general_home_screen.dart';
+import 'package:jli_frontend/ui/screens/home/lawyers/lawyers_home_screen.dart';
+import 'package:jli_frontend/ui/screens/home/prisoners/prisoner_home_screen.dart';
+import 'package:jli_frontend/ui/screens/login/general/g_login_with_aadhar_screen.dart';
+import 'package:jli_frontend/ui/screens/login/lawyers/l_login_with_aadhar_screen.dart';
 import 'package:jli_frontend/ui/screens/login/prisoners/login_choose_screen.dart';
 import 'package:jli_frontend/ui/utils/signup_button.dart';
 
@@ -20,7 +25,7 @@ class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController lawyerOtpController = TextEditingController();
   final TextEditingController generalAadharController = TextEditingController();
   final TextEditingController generalOtpController = TextEditingController();
-
+  
 
 
   @override
@@ -29,14 +34,19 @@ class _SignupScreenState extends State<SignupScreen> {
     TextEditingController selectedOtpController = prisonerOtpController;
 
     Widget selectedLoginScreen = LoginChooseScreen();
+    Widget selectedHomeScreen = PrisonerHomeScreen();
 
     if (widget.user == 'lawyer') {
       selectedAadharController = lawyerAadharController;
       selectedOtpController = lawyerOtpController;
+      selectedHomeScreen = LawyerHomeScreen();
+      selectedLoginScreen= LLoginWithAadharScreen();
 
     } else if (widget.user == 'general') {
       selectedAadharController = generalAadharController;
       selectedOtpController = generalOtpController;
+      selectedHomeScreen = GeneralHomeScreen();
+      selectedLoginScreen = GLoginWithAadharScreen();
     }
 
     Size screenSize = MediaQuery.of(context).size;
@@ -239,7 +249,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 15, 0, 0),
-                                    child: SignupButton(user: widget.user),
+                                    child: SignupButton(user: widget.user, selectedHomeScreen: selectedHomeScreen,),
                                   ),
                                 ),
                                 Center(
@@ -247,7 +257,6 @@ class _SignupScreenState extends State<SignupScreen> {
                                     onPressed: () {
 
                                       Navigator.of(context).push(MaterialPageRoute(builder: (_)=>selectedLoginScreen));
-
 
                                     },
                                     child: Text(

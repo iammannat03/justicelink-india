@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../utils/login_to_home_screen_button.dart';
+import '../../../utils/login_to_home_screen_button.dart';
 
 class LoginWithAadhaarScreen extends StatefulWidget {
   const LoginWithAadhaarScreen({super.key});
@@ -227,7 +227,7 @@ class _LoginWithAadhaarScreenState extends State<LoginWithAadhaarScreen> {
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 15, 0, 0),
-                                    child: LoginToHomeScreenButton(),
+                                    child: LoginToHomeScreenButton(user: 'prisoner',),
                                   ),
                                 ),
                               ],

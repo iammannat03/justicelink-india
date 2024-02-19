@@ -12,13 +12,15 @@ class RecommendedLawyerCard extends StatelessWidget {
         print('pressed');
       },
       child: Card(
+        elevation: 3,
+        color: Color.fromARGB(200, 255, 255, 255),
         child: Container(
           padding: EdgeInsets.all(8),
           height: 150,
           width: 350,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: Theme.of(context).cardColor
+            borderRadius: BorderRadius.circular(10),
+            color: Color.fromARGB(200, 255, 255, 255)
             // shape: RoundedRectangleBorder(borderRadius: 20)
           ),
           child: Row(
@@ -47,7 +49,7 @@ class RecommendedLawyerCard extends StatelessWidget {
                     Text(lawyer.name),
                     Text(lawyer.designation,style: TextStyle(color: Theme.of(context).colorScheme.secondary),),
                     Text(lawyer.location),
-                    Text(lawyer.language),
+                    Text(lawyer.language,style: TextStyle(fontStyle: FontStyle.italic),),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8.0),
                       child: Container(
