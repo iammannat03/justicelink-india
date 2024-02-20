@@ -46,15 +46,15 @@ class _PrisonerHomeScreenState extends State<PrisonerHomeScreen> {
               // color: Colors.green,
               decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  border: Border.all(color: Colors.black38, width: 2),
+                  // border: Border.all(color: Colors.black38, width: 2),
                   image: DecorationImage(
-                      image: AssetImage("assets/lawyer_image_3.png"),
+                      image: AssetImage("assets/some_lawyer_icon.png"),
                       fit: BoxFit.cover)),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                'DR. PRIYA SHARMA',
+                'DR. RAHUL DESAI',
                 style: GoogleFonts.lato(
                     fontSize: 20, fontWeight: FontWeight.w300),
               ),
@@ -63,8 +63,8 @@ class _PrisonerHomeScreenState extends State<PrisonerHomeScreen> {
         ),
         actions: [
           IconButton(
-              onPressed: () {}, icon: Icon(Ionicons.videocam_outline)),
-          IconButton(onPressed: () {}, icon: Icon(Ionicons.menu))
+              onPressed: () {}, icon: Icon(Ionicons.videocam,color: Color.fromARGB(200, 190, 169, 169))),
+          IconButton(onPressed: () {}, icon: Icon(Ionicons.options,color: Color.fromARGB(200, 190, 169, 169),))
           // SizedBox(width: 20,),
         ],
       )

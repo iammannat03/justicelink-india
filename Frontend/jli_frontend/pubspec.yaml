@@ -41,5 +41,6 @@ flutter:
     - assets/tutorial.png
     - assets/tutorial_man.png
     - assets/actual_maybe.png
-
+    - assets/actual_actual.png
+    - assets/some_lawyer_icon.png
   uses-material-design: true

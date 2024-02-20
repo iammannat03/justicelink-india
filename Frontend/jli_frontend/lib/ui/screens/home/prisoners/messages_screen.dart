@@ -15,7 +15,7 @@ class MessagesScreen extends StatefulWidget {
 class _MessagesScreenState extends State<MessagesScreen> {
   final List<Message> messagesList = [
     const Message(message: 'Good morning, Mr.U', user: 'lawyer'),
-    const Message(message: 'This is Priya from Legal Ac.', user: 'lawyer'),
+    const Message(message: 'This is Rahul from Legal Ac.', user: 'lawyer'),
     const Message(message: 'Gm, any news on my case?', user: 'prisoner'),
     const Message(
         message: 'I have just recieved word from the court', user: 'lawyer'),

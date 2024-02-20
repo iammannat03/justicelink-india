@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui';
 import 'package:google_fonts/google_fonts.dart';
@@ -24,6 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // print('WORKS');
     return Scaffold(
       // floatingActionButton: ,
       body: SingleChildScrollView(
@@ -136,6 +138,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     image: DecorationImage(
                                         image: AssetImage(
                                             "assets/card-image-5.png"),
+                                        colorFilter: ColorFilter.linearToSrgbGamma(),
                                         fit: BoxFit.cover)),
                               ),
                             ],
@@ -163,14 +166,19 @@ class _HomeScreenState extends State<HomeScreen> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 8),
                                   child: Container(
-                                    height: 100,
-                                    width: 200,
-                                    decoration: const BoxDecoration(
+                                    height: 84,
+                                    width: 184,
+
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
                                         image: DecorationImage(
+
                                             image: AssetImage(
                                                 "assets/actual.jpg"),
+                                            colorFilter: ColorFilter.linearToSrgbGamma(),
+                                            fit: BoxFit.contain
                                             // fit: BoxFit.cover
                                         ),
                                     ),
@@ -246,7 +254,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   Text('Court room no. ${_upcomingEvents[index].roomNo}'),
                                   Text('Additonal info: ${_upcomingEvents[index].additionalNotes!}'),
                                   Container(
-                                    child: Text(_upcomingEvents[index].status),
+                                    child: Text(_upcomingEvents[index].status,style: TextStyle(fontStyle: FontStyle.italic,decoration: TextDecoration.underline),),
                                   )
                                 ],
                               ),
