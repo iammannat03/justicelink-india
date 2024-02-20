@@ -57,7 +57,7 @@ class LegalChatBotScreen extends StatelessWidget {
                   style: TextStyle(
                     fontFamily: 'Julius Sans One',
                     fontSize: 32,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
               ),
@@ -75,8 +75,9 @@ class LegalChatBotScreen extends StatelessWidget {
                   child: Text(
                     'Dear Fellow Indian,\n\nMany of us are unaware of our fundamental rights, enshrined in our Constitution, which can safeguard us in uncertain situations. The Constitution, under Articles like 14 (Right to Equality), 20 (Protection in Respect of Conviction for Offenses), and 21 (Right to Life and Personal Liberty), provides crucial protections.\n\nHowever, knowledge of these rights is limited. This lack of awareness can affect our access to justice. \n\nTo bridge this gap, we offer a chatbot that can answer your questions about fundamental rights and provide legal aid information. Don\'t hesitate to ask about your rights, legal procedures, or any concerns you may have. Empower yourself with knowledge and protect your rights.\n\nExplore the chatbot below for assistance. Your rights matter!\n',
                     style: TextStyle(
-                      fontFamily: 'Open Sans',
-                    ),
+                      fontFamily: 'Callibri',
+                      fontWeight: FontWeight.w300
+                    )
                   ),
                 ),
               ),
@@ -94,7 +95,7 @@ class LegalChatBotScreen extends StatelessWidget {
                   style: TextStyle(
                     fontFamily: 'Open Sans',
                     fontSize: 16,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w400,
                   ),
                 ),
               ),
@@ -102,6 +103,7 @@ class LegalChatBotScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsetsDirectional.fromSTEB(20, 0, 20, 30),
               child: TextFormField(
+                cursorColor: Colors.black,
                 autofocus: true,
                 obscureText: false,
                 decoration: InputDecoration(
@@ -109,6 +111,7 @@ class LegalChatBotScreen extends StatelessWidget {
                   labelStyle: const TextStyle(
                     fontFamily: 'Readex Pro',
                     fontStyle: FontStyle.italic,
+                    color: Colors.black
                   ),
                   hintStyle: const TextStyle(
                     fontFamily: 'Readex Pro',

@@ -49,7 +49,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
     if(!_scrollController.hasClients) return;
 
     _scrollController.animateTo(
-      1000,
+      250,
       duration: Duration(milliseconds: 500),
       curve: Curves.ease,
     );
@@ -64,7 +64,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
     if(!_scrollController.hasClients) return;
 
     _scrollController.animateTo(
-      1000,
+      250,
       duration: Duration(milliseconds: 500),
       curve: Curves.ease,
     );

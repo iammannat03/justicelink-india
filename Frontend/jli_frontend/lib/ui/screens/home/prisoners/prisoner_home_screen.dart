@@ -102,14 +102,14 @@ class _PrisonerHomeScreenState extends State<PrisonerHomeScreen> {
               onPressed: () {},
               style: ElevatedButton.styleFrom(
                   backgroundColor:
-                  const Color.fromARGB(255, 128, 105, 90),
+                  const Color.fromARGB(176, 190, 169, 169),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   )),
               child: Text(
                 "English",
                 style: GoogleFonts.juliusSansOne(
-                    fontSize: 15, fontWeight: FontWeight.w600),
+                    fontSize: 15, fontWeight: FontWeight.w600,color:Theme.of(context).cardColor),
               ),
             ),
           ),

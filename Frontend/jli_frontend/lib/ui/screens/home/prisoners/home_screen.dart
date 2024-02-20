@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:jli_frontend/models/upcoming_events.dart';
 import 'package:jli_frontend/ui/screens/home/prisoners/legal_chat_bot_screen.dart';
 
@@ -31,17 +32,13 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             Container(
               width: double.infinity,
-              height: 300,
+              height: 240,
               // height: 300,
               decoration: const BoxDecoration(color: Colors.white),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 5),
-                    child: Text("How to use?",style: GoogleFonts.lato(fontSize: 25),),
-                  ),
-                  const Padding(
+                   Padding(
                     padding: EdgeInsets.all(7),
                     child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
@@ -49,19 +46,53 @@ class _HomeScreenState extends State<HomeScreen> {
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          FinalHomeScreenCard(),
-                          FinalHomeScreenCard(),
-                          FinalHomeScreenCard(),
-                          FinalHomeScreenCard(),
+                          FinalHomeScreenCard(image: AssetImage("assets/tutorial_man.png"), question: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('How to find a',style: TextStyle(fontSize: 17,fontStyle: FontStyle.italic),),
+                              Text('suitable lawyer?',style: TextStyle(fontSize: 17,fontStyle: FontStyle.italic)),
+                              Spacer(),
+                              Row(children: [
+                                Spacer(),
+                                IconButton(onPressed: (){}, icon: Icon(Ionicons.play_circle,size: 50,color: Color.fromARGB(176, 190, 169, 169),))
+                              ],)
+                            ],
+                          ),),
+                          FinalHomeScreenCard(image: AssetImage('assets/tutorial_man.png'), question:Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('How to use the',style: TextStyle(fontSize: 17,fontStyle: FontStyle.italic)),
+                              Text('chatbot correctly?',style: TextStyle(fontSize: 17,fontStyle: FontStyle.italic)),
+                              Spacer(),
+                              Row(
+                                children: [
+                                  Spacer(),
+                                  IconButton(onPressed: (){}, icon: Icon(Ionicons.play_circle,size: 50,color: Color.fromARGB(176, 190, 169, 169),))
+                                ],
+                              )
+                            ],
+                          )),
+                          FinalHomeScreenCard(image: AssetImage("assets/tutorial_man.png"), question: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('How to contact',style: TextStyle(fontSize: 17,fontStyle: FontStyle.italic)),
+                              Text('your lawyer?',style: TextStyle(fontSize: 17,fontStyle: FontStyle.italic)),
+                              Spacer(),
+                              Row(
+                                children: [
+                                  Spacer(),
+                                  IconButton(onPressed: (){}, icon: Icon(Ionicons.play_circle,size: 50,color: Color.fromARGB(176, 190, 169, 169),))
+                                ],
+                              )
+                            ],
+                          ),),
+                          // FinalHomeScreenCard(image: null,),
                         ],
                       ),
                     ),
                   ),
                 ],
               ),
-            ),
-            const SizedBox(
-              height: 10,
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -275,18 +306,39 @@ class HomeScreenCard extends StatelessWidget {
 }
 
 class FinalHomeScreenCard extends StatelessWidget {
-  const FinalHomeScreenCard({super.key});
+  const FinalHomeScreenCard({super.key, required this.image, required this.question});
 
+  final AssetImage image;
+  final Widget question;
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 2,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      // color: Colors.black26,
-      child: Container(
-        height: 200,
-        width: 175,
-        decoration: BoxDecoration(color: Color.fromARGB(218, 232, 226, 226),borderRadius: BorderRadius.circular(20)),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 6,vertical: 3),
+      child: Stack(
+        children:[
+
+          // const Text('How to find lawyer?'),
+          Container(
+            height: 200,
+            width: 175,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: image,
+                opacity: 12,
+                fit: BoxFit.cover
+              )
+            ),
+            child: BackdropFilter(filter: ImageFilter.blur(sigmaX: 0,sigmaY: 0),child: Container(color: Colors.black.withOpacity(0.01),),),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SizedBox(
+                height: 200,
+                width: 175,
+                child: question),
+          )
+
+        ]
       ),
     );
   }

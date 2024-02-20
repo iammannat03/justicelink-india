@@ -37,5 +37,9 @@ flutter:
     - assets/actual.jpg
     - assets/user_profile.jpeg
     - assets/user_final.png
+    - assets/explainer.jpg
+    - assets/tutorial.png
+    - assets/tutorial_man.png
+    - assets/actual_maybe.png
 
   uses-material-design: true
