@@ -132,7 +132,7 @@ class _PrisonerHomeScreenState extends State<PrisonerHomeScreen> {
         elevation: 0,
         currentIndex: currentIndex,
         unselectedItemColor: Colors.grey,
-        selectedItemColor: Colors.black,
+        selectedItemColor: Color.fromARGB(200, 192, 169, 169),
         onTap: onTap,
         items: const [
           BottomNavigationBarItem(

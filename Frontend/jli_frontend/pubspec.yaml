@@ -43,4 +43,5 @@ flutter:
     - assets/actual_maybe.png
     - assets/actual_actual.png
     - assets/some_lawyer_icon.png
+    - assets/prisoner_profile_picture.png
   uses-material-design: true

@@ -15,9 +15,9 @@ class _PrisonerProfileCardState extends State<PrisonerProfileCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 5,
+      elevation: 1,
       color: Theme.of(context).cardColor,
-      child: Container(
+      child: SizedBox(
         height: 150,
         width: 390,
         child: Column(
@@ -30,11 +30,12 @@ class _PrisonerProfileCardState extends State<PrisonerProfileCard> {
                     width: 120,
                     height: 120,
                     // color: Colors.green,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         shape: BoxShape.circle,
-                        border:Border.all(style: BorderStyle.solid,width: 2),
+                        // border:Border.all(style: BorderStyle.solid,width: 2),
                         image: DecorationImage(
-                            image: AssetImage("assets/user_final.png"),
+                            image: AssetImage("assets/prisoner_profile_picture.png"),
+                            colorFilter: ColorFilter.linearToSrgbGamma(),
 
                             fit: BoxFit.cover
                         )
@@ -46,10 +47,10 @@ class _PrisonerProfileCardState extends State<PrisonerProfileCard> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(widget.prisoner.name,style: GoogleFonts.juliusSansOne(fontSize: 20),),
-                      Text("Age : ${widget.prisoner.age.toString()}",style: GoogleFonts.merriweather(),),
-                      Text("Resident of ${widget.prisoner.location}",style: GoogleFonts.merriweather(),),
-                      Text(widget.prisoner.languages,style: GoogleFonts.merriweather(fontStyle: FontStyle.italic),)
+                      Text(widget.prisoner.name,style: GoogleFonts.juliusSansOne(fontSize: 20,fontWeight:FontWeight.bold)),
+                      Text("Age : ${widget.prisoner.age.toString()}",style: GoogleFonts.merriweather(color:const Color.fromARGB(200, 192, 169, 169),fontWeight:FontWeight.bold),),
+                      Text(widget.prisoner.location,style: GoogleFonts.merriweather(color:const Color.fromARGB(200, 192, 169, 169),fontWeight:FontWeight.bold),),
+                      Text(widget.prisoner.languages,style: GoogleFonts.merriweather(color:const Color.fromARGB(200, 192, 169, 169),fontStyle: FontStyle.italic,fontWeight:FontWeight.bold),)
                     ],
                   ),
                 )

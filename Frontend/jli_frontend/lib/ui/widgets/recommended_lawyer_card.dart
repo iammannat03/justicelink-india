@@ -14,7 +14,7 @@ class _RecommendedLawyerCardState extends State<RecommendedLawyerCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation:5,
+      elevation:1,
       color: Theme.of(context).cardColor,
       child: Container(
         padding: EdgeInsets.all(8),

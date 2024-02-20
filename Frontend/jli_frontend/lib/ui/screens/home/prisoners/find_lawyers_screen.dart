@@ -107,6 +107,8 @@ class YourAlertDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: AlertDialog(
+        surfaceTintColor: Color.fromARGB(200, 190, 169, 169),
+        backgroundColor: Theme.of(context).cardColor,
         elevation: 10,
         // backgroundColor: Colors.white,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -128,7 +130,7 @@ class YourAlertDialog extends StatelessWidget {
                 ),
               ),
               style: ElevatedButton.styleFrom(
-                elevation: 10,
+                elevation: 5,
                 backgroundColor: Theme.of(context).cardColor
               ),
               onPressed: () => {
