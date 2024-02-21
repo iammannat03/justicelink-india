@@ -10,6 +10,8 @@ class LUserProfileScreen extends StatefulWidget {
 class _LUserProfileScreenState extends State<LUserProfileScreen> {
   @override
   Widget build(BuildContext context) {
-    return Placeholder();
+    return Center(
+      child: Text('Lawyer profile page'),
+    );
   }
 }

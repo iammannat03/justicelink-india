@@ -135,7 +135,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
           itemCount: messagesList.length,
           itemBuilder: (BuildContext context, int index) {
             return MessageCard(
-                message: messagesList[index], user: messagesList[index].user);
+                message: messagesList[index], user: messagesList[index].user, side_ofuser: 'prisoner',);
           },
 
         ),

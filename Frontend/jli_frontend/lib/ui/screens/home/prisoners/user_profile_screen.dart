@@ -15,6 +15,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: const EdgeInsets.all(8.0),
@@ -24,7 +25,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              // mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text('Legal Representation status:',style: GoogleFonts.merriweather(fontSize: 20) ,),
                 Icon(Icons.check,color: Colors.green,)
@@ -32,13 +33,29 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
             ),
           ),
         ),
-        Text('Pro-Bono India, Legal Aid Services ',style: TextStyle(fontStyle: FontStyle.italic,decoration: TextDecoration.underline),),
+        Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: Text('Pro-Bono India, Legal Aid Services ',style: TextStyle(fontStyle: FontStyle.italic,decoration: TextDecoration.underline),),
+          ),
+        ),
         Spacer(),
-        Text('Previous cases:',style: GoogleFonts.merriweather(fontSize: 20) ,),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: Text('Previous cases:',style: GoogleFonts.merriweather(fontSize: 20) ,),
+        ),
         SizedBox(height:15,),
-        Text('No records found.',style: TextStyle(fontStyle: FontStyle.italic,),),
+        Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: Text('No records found.',style: TextStyle(fontStyle: FontStyle.italic,),),
+          ),
+        ),
         Spacer(),
-        Text('My Documents:',textAlign: TextAlign.left,style: GoogleFonts.merriweather(fontSize: 20),),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text('My Documents:',textAlign: TextAlign.left,style: GoogleFonts.merriweather(fontSize: 20),),
+        ),
         Padding(
           padding: const EdgeInsets.fromLTRB(8,10,8,50),
           child: DocumentsCard(),

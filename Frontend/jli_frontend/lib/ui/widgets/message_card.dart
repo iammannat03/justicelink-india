@@ -5,17 +5,18 @@ import 'package:ionicons/ionicons.dart';
 import '../../models/message.dart';
 
 class MessageCard extends StatelessWidget {
-  const MessageCard({super.key, required this.message, required this.user});
+  const MessageCard({super.key, required this.message, required this.user, required this.side_ofuser});
 
   final Message message;
   final String user;
+  final String side_ofuser;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 1, horizontal: 8),
       child: Row(
-        mainAxisAlignment: user=='prisoner'?MainAxisAlignment.end:MainAxisAlignment.start,
+        mainAxisAlignment: side_ofuser=='prisoner'?(user=='prisoner'?MainAxisAlignment.end:MainAxisAlignment.start):(user=='prisoner'?MainAxisAlignment.start:MainAxisAlignment.end),
         children: [
           Card(
 

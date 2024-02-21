@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:jli_frontend/models/upcoming_events.dart';
 import 'package:jli_frontend/ui/screens/home/prisoners/legal_chat_bot_screen.dart';
+import 'package:jli_frontend/ui/widgets/upcoming_events_card.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -212,61 +213,7 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(
               height: 15,
             ),
-            Card(
-              color: Theme.of(context).cardColor,
-              elevation: 1,
-              child: Container(
-
-                // height: 1000,
-                width: 390,
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text('Upcoming events',style: GoogleFonts.juliusSansOne(fontWeight: FontWeight.bold,fontSize: 25),),
-                    ),
-                    SizedBox(
-                      height: 500,
-                      child: ListView.builder(itemCount: _upcomingEvents.length,itemBuilder: (BuildContext context, int index){
-                        return Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Color.fromARGB(176, 190, 169, 169),
-                              borderRadius: BorderRadius.circular(10)
-                            ),
-                            width: 390,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(_upcomingEvents[index].eventName,style: GoogleFonts.merriweather(fontSize: 20),),
-                                  // Spacer(),
-                                  Row(
-                                    children: [
-                                      Spacer(),
-                                      Text(_upcomingEvents[index].dateAndTime,style: TextStyle(fontSize: 13),),
-                                    ],
-                                  ),
-                                  Text(_upcomingEvents[index].eventType,style: TextStyle(color: Theme.of(context).colorScheme.secondary),),
-                                  Text(_upcomingEvents[index].eventDescription),
-                                  Text('Court room no. ${_upcomingEvents[index].roomNo}'),
-                                  Text('Additonal info: ${_upcomingEvents[index].additionalNotes!}'),
-                                  Container(
-                                    child: Text(_upcomingEvents[index].status,style: TextStyle(fontStyle: FontStyle.italic,decoration: TextDecoration.underline),),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        );
-                      }),
-                    )
-                  ],
-                ),
-              ),
-            ),
+            UpcomingEventsCard(upcoming_events_list: _upcomingEvents),
             SizedBox(height: 20,)
           ],
         ),
@@ -324,7 +271,6 @@ class FinalHomeScreenCard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 6,vertical: 3),
       child: Stack(
         children:[
-
           // const Text('How to find lawyer?'),
           Container(
             height: 200,

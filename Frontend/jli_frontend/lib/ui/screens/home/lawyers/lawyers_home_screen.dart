@@ -13,7 +13,7 @@ class LawyerHomeScreen extends StatefulWidget {
   State<LawyerHomeScreen> createState() => _LawyerHomeScreenState();
 }
 
-class _LawyerHomeScreenState extends State<LawyerHomeScreen> {List<Widget> pages_body = [LHomeScreen(), LConnectScreen(), LMessagesScreen(), LUserProfileScreen()];
+class _LawyerHomeScreenState extends State<LawyerHomeScreen> {List<Widget> pages_body = [LHomeScreen(), LConnectScreen(),LUserProfileScreen()];
 Widget currentPage = LHomeScreen();
 int currentIndex = 0;
 
@@ -60,14 +60,15 @@ Widget build(BuildContext context) {
           child: ElevatedButton(
             onPressed: () {},
             style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 128, 105, 90),
+                backgroundColor:
+                const Color.fromARGB(176, 190, 169, 169),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 )),
             child: Text(
               "English",
               style: GoogleFonts.juliusSansOne(
-                  fontSize: 15, fontWeight: FontWeight.w600),
+                  fontSize: 15, fontWeight: FontWeight.w600,color:Theme.of(context).cardColor),
             ),
           ),
         ),
@@ -90,13 +91,12 @@ Widget build(BuildContext context) {
       elevation: 0,
       currentIndex: currentIndex,
       unselectedItemColor: Colors.grey,
-      selectedItemColor: Colors.black,
+      selectedItemColor: Color.fromARGB(200, 192, 169, 169),
       onTap: onTap,
 
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home_rounded,),label: "Home"),
-        BottomNavigationBarItem(icon: Icon(Icons.near_me_rounded,),label: "New Client"),
-        BottomNavigationBarItem(icon: Icon(Icons.message_rounded,),label: "Messages"),
+        BottomNavigationBarItem(icon: Icon(Icons.near_me_rounded,),label: "Clients"),
         BottomNavigationBarItem(icon: Icon(Icons.person,),label: "Profile"),
       ],
     ),
