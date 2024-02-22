@@ -33,22 +33,29 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
             ),
           ),
         ),
-        Center(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Text('Pro-Bono India, Legal Aid Services ',style: TextStyle(fontStyle: FontStyle.italic,decoration: TextDecoration.underline),),
-          ),
-        ),
-        Spacer(),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8),
+          padding: const EdgeInsets.fromLTRB(8, 0, 8, 20),
+          child: Text('Pro-Bono India, Legal Aid Services ',style: TextStyle(fontStyle: FontStyle.italic,decoration: TextDecoration.underline),),
+        ),
+        // Spacer(),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 0),
           child: Text('Previous cases:',style: GoogleFonts.merriweather(fontSize: 20) ,),
         ),
         SizedBox(height:15,),
-        Center(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Text('No records found.',style: TextStyle(fontStyle: FontStyle.italic,),),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Card(
+            elevation: 2,
+            child: Container(
+              height: 51,
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: Text('No records found.',style: TextStyle(fontStyle: FontStyle.italic,),),
+                ),
+              ),
+            ),
           ),
         ),
         Spacer(),
