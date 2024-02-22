@@ -18,7 +18,7 @@ class _PrisonerProfileCardState extends State<PrisonerProfileCard> {
       elevation: 1,
       color: Theme.of(context).cardColor,
       child: SizedBox(
-        height: 150,
+        // height: 150,
         width: 390,
         child: Column(
           children: [
@@ -50,7 +50,33 @@ class _PrisonerProfileCardState extends State<PrisonerProfileCard> {
                       Text(widget.prisoner.name,style: GoogleFonts.juliusSansOne(fontSize: 20,fontWeight:FontWeight.bold)),
                       Text("Age : ${widget.prisoner.age.toString()}",style: GoogleFonts.merriweather(color:const Color.fromARGB(200, 192, 169, 169),fontWeight:FontWeight.bold),),
                       Text(widget.prisoner.location,style: GoogleFonts.merriweather(color:const Color.fromARGB(200, 192, 169, 169),fontWeight:FontWeight.bold),),
-                      Text(widget.prisoner.languages,style: GoogleFonts.merriweather(color:const Color.fromARGB(200, 192, 169, 169),fontStyle: FontStyle.italic,fontWeight:FontWeight.bold),)
+                      Text(widget.prisoner.languages,style: GoogleFonts.merriweather(color:const Color.fromARGB(200, 192, 169, 169),fontStyle: FontStyle.italic,fontWeight:FontWeight.bold),),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 12.0),
+                        child: Text(widget.prisoner.natureOfOffense,style: GoogleFonts.merriweather(color: Colors.black,fontStyle: FontStyle.italic,fontWeight:FontWeight.bold,decoration:TextDecoration.underline),),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 0,vertical: 2),
+                        child: GestureDetector(
+                          onTap: (){
+                            print('pressed file');
+                          },
+                          child: Card(
+                            elevation: 8,
+                            child: Container(
+                              height: 30,
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 2),
+                                child: Center(child: Text('Charge_sheet.pdf',style: TextStyle(color: Color.fromARGB(200, 192, 169, 169),fontSize: 15),)),
+                              ),
+                              decoration: BoxDecoration(
+                                color: Colors.grey.withOpacity(0.05),
+                                // shape:
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 )

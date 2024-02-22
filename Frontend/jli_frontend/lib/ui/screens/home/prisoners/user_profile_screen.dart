@@ -6,7 +6,6 @@ import 'package:jli_frontend/ui/widgets/prisoner_profile_card.dart';
 
 class UserProfileScreen extends StatefulWidget {
   const UserProfileScreen({super.key});
-
   @override
   State<UserProfileScreen> createState() => _UserProfileScreenState();
 }
@@ -14,12 +13,12 @@ class UserProfileScreen extends StatefulWidget {
 class _UserProfileScreenState extends State<UserProfileScreen> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return ListView(
+      // crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: PrisonerProfileCard(prisoner: PrisonerProfile(name: 'MR. MANOJ KUMAR', age: 38, location: 'New Delhi', languages: 'Hindi, Urdu',ongoing_cases: Case(case_name: 'State vs Poor guy')),),
+          child: PrisonerProfileCard(prisoner: PrisonerProfile(name: 'MR. MANOJ KUMAR', age: 38, location: 'New Delhi', languages: 'Hindi, Urdu',ongoing_cases: Case(case_name: 'State vs Poor guy'), natureOfOffense: 'Theft, Burglary', stageOfCase: 'Under-trial'),),
         ),
         Center(
           child: Padding(

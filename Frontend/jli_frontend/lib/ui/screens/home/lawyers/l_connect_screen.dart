@@ -44,10 +44,10 @@ class _LConnectScreenState extends State<LConnectScreen> {
                           // color: Colors.black,
                           decoration: BoxDecoration(
                           ),
-                          height: 280,
+                          // height: 280,
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: PrisonerProfileCard(prisoner: PrisonerProfile(name: 'MANOJ KUMAR', age: 38, location: 'New Delhi', languages: 'Hindi, Urdu',ongoing_cases: Case(case_name: 'State vs Poor guy')),),
+                            child: PrisonerProfileCard(prisoner: PrisonerProfile(name: 'MANOJ KUMAR', age: 38, location: 'New Delhi', languages: 'Hindi, Urdu',ongoing_cases: Case(case_name: 'State vs Poor guy'), natureOfOffense: 'Theft, Burglary', stageOfCase: ''),),
                           ),),
                       ),
                       ),

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ionicons/ionicons.dart';
@@ -34,6 +35,23 @@ class _PrisonerHomeScreenState extends State<PrisonerHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: currentIndex==3?null:Stack(
+        children: [
+          Positioned(
+            top: 165,
+            right: 0,
+            child: FloatingActionButton(onPressed: () {
+              print('pressed FAB');
+                    },
+            elevation: 2,
+            backgroundColor: const Color.fromARGB(200, 192, 169, 169).withOpacity(0.5),
+            // mini: true,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(200)),
+            child: const Center(child: Icon(Ionicons.help_circle,color: Colors.white60,size: 50,)),
+
+                    ),
+          )],
+      ),
       appBar: currentIndex == 2
           ? AppBar(
         automaticallyImplyLeading: false,
@@ -44,7 +62,7 @@ class _PrisonerHomeScreenState extends State<PrisonerHomeScreen> {
               width: 50,
               height: 50,
               // color: Colors.green,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   // border: Border.all(color: Colors.black38, width: 2),
                   image: DecorationImage(
@@ -63,8 +81,8 @@ class _PrisonerHomeScreenState extends State<PrisonerHomeScreen> {
         ),
         actions: [
           IconButton(
-              onPressed: () {}, icon: Icon(Ionicons.videocam,color: Color.fromARGB(200, 190, 169, 169))),
-          IconButton(onPressed: () {}, icon: Icon(Ionicons.options,color: Color.fromARGB(200, 190, 169, 169),))
+              onPressed: () {}, icon: const Icon(Ionicons.videocam,color: Color.fromARGB(200, 190, 169, 169))),
+          IconButton(onPressed: () {}, icon: const Icon(Ionicons.options,color: Color.fromARGB(200, 190, 169, 169),))
           // SizedBox(width: 20,),
         ],
       )
@@ -132,7 +150,7 @@ class _PrisonerHomeScreenState extends State<PrisonerHomeScreen> {
         elevation: 0,
         currentIndex: currentIndex,
         unselectedItemColor: Colors.grey,
-        selectedItemColor: Color.fromARGB(200, 192, 169, 169),
+        selectedItemColor: const Color.fromARGB(200, 192, 169, 169),
         onTap: onTap,
         items: const [
           BottomNavigationBarItem(
