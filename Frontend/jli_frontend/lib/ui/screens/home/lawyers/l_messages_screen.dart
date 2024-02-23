@@ -2,6 +2,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:jli_frontend/ui/screens/home/lawyers/schedule_videocall_screen.dart';
 
 import '../../../../models/message.dart';
 import '../../../widgets/message_card.dart';
@@ -41,6 +42,7 @@ class _LMessagesScreenState extends State<LMessagesScreen> {
   final ScrollController _scrollController = ScrollController();
   FilePickerResult? result;
   List<PlatformFile>? files;
+  bool _showCard = false;
 
   void _addMessage(String message) {
     setState(() {
@@ -69,8 +71,99 @@ class _LMessagesScreenState extends State<LMessagesScreen> {
       curve: Curves.ease,
     );
   }
-
+  late OverlayEntry overlayEntry;
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    overlayEntry = OverlayEntry(
+        maintainState: true,
+        builder: (_) => Center(
+          child: Card(
+            color: const Color.fromARGB(200, 190, 169, 169),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30)),
+            child: Container(
+              // height: 200,
+              width: MediaQuery.sizeOf(context).width*0.85,
+              // color: Color.fromARGB(200, 190, 169, 169),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text(
+                      'Schedule a video call',
+                      style: TextStyle(
+                          fontSize: 23,
+                          fontStyle: FontStyle.italic,
+                          // fontWeight: FontWeight.w300,
+                          color: Colors.black38),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Center(
+                      child: Text(
+                        'Click proceed to schedule a video call with your client.',
+                        style: GoogleFonts.merriweather(
+                            fontWeight: FontWeight.w300,
+                            fontSize: 14,
+                            fontStyle: FontStyle.italic,
+                            color: Colors.black),
+                      ),
+                    ),
+                  ),
+                  // Spacer(),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      // crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        // Spacer(),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: TextButton(
+                              onPressed: () {
+                                setState(() {
+                                  _showCard = false;
+                                });
+                                overlayEntry.remove();
+                              },
+                              child: const Text(
+                                'Cancel',
+                                style: TextStyle(
+                                    color: Colors.white70),
+                              )),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                _showCard = false;
+                                Navigator.of(context).push(MaterialPageRoute(builder: (_)=>ScheduleVideoCallScreen()));
+                              });
+                              overlayEntry.remove();
+                              // _showSnackBarConfirmation();
+
+                            },
+                            child: const Text('Proceed',style: TextStyle(color: Colors.white70),),
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor:
+                                const Color.fromARGB(100, 91, 81, 81)),
+                          ),
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ));
+  }
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: SizedBox(
@@ -160,7 +253,11 @@ class _LMessagesScreenState extends State<LMessagesScreen> {
         ),
         actions: [
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  _showCard=true;
+                });
+              },
               icon: Icon(Ionicons.videocam,
                   color: Color.fromARGB(200, 190, 169, 169))),
           IconButton(
@@ -172,19 +269,29 @@ class _LMessagesScreenState extends State<LMessagesScreen> {
           // SizedBox(width: 20,),
         ],
       ),
-      body: Container(
-        height: MediaQuery.sizeOf(context).height*0.72,
-        child: ListView.builder(
-          controller: _scrollController,
+      body: Stack(
+        children: [Container(
+          height: MediaQuery.sizeOf(context).height*0.72,
+          child: ListView.builder(
+            controller: _scrollController,
 
 
-          itemCount: messagesList.length,
-          itemBuilder: (BuildContext context, int index) {
-            return MessageCard(
+            itemCount: messagesList.length,
+            itemBuilder: (BuildContext context, int index) {
+              return MessageCard(
                 message: messagesList[index], user: messagesList[index].user, side_ofuser: 'lawyer',);
-          },
+            },
 
+          ),
         ),
+          _showCard
+              ? Positioned(
+            child: overlayEntry.builder(context),
+            top: 20,
+            right: 30,
+          )
+              : const SizedBox()
+        ],
       ),
 
       // bottomNavigationBar: ,

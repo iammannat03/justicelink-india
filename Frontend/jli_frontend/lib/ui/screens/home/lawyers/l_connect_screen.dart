@@ -23,7 +23,7 @@ class _LConnectScreenState extends State<LConnectScreen> {
           child: Card(
             elevation: 1,
             // color: Colors.white,
-            child:Container(
+            child:SizedBox(
               height: 450,
               width: MediaQuery.sizeOf(context).width*0.95,
               child: Padding(
@@ -42,11 +42,11 @@ class _LConnectScreenState extends State<LConnectScreen> {
                         color: Theme.of(context).cardColor.withAlpha(100),
                         child: Container(
                           // color: Colors.black,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                           ),
                           // height: 280,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                          child: const Padding(
+                            padding: EdgeInsets.all(8.0),
                             child: PrisonerProfileCard(prisoner: PrisonerProfile(name: 'MANOJ KUMAR', age: 38, location: 'New Delhi', languages: 'Hindi, Urdu',ongoing_cases: Case(case_name: 'State vs Poor guy'), natureOfOffense: 'Theft, Burglary', stageOfCase: ''),),
                           ),),
                       ),
@@ -55,11 +55,11 @@ class _LConnectScreenState extends State<LConnectScreen> {
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                         children: [
-                          Spacer(),
+                          const Spacer(),
                           ElevatedButton(
                               onPressed: (){
                                 Navigator.of(context).push(
-                                  MaterialPageRoute(builder: (_)=>LMessagesScreen()));
+                                  MaterialPageRoute(builder: (_)=>const LMessagesScreen()));
                               },
                               child: Text('Message',style: GoogleFonts.cabin(color: Colors.black),),
                             style: ElevatedButton.styleFrom(

@@ -26,8 +26,9 @@ class MessageCard extends StatelessWidget {
 
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: user=='prisoner'?const Color.fromARGB(221, 208, 192, 192):const Color.fromARGB(
-                    200, 249, 242, 242)
+                color: side_ofuser=='prisoner'?(user=='prisoner'?const Color.fromARGB(221, 208, 192, 192):const Color.fromARGB(
+    200, 249, 242, 242)):(user=='lawyer'?const Color.fromARGB(221, 208, 192, 192):const Color.fromARGB(
+                    200, 249, 242, 242))
               ),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -49,7 +50,6 @@ class MessageCard extends StatelessWidget {
                   ),
                 ),
               ),
-              // color: user=='prisoner'?Colors.blueGrey: Colors.grey,
             ),
           ),
         ],

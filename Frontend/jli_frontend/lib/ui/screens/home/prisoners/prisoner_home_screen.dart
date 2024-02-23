@@ -52,41 +52,7 @@ class _PrisonerHomeScreenState extends State<PrisonerHomeScreen> {
                     ),
           )],
       ),
-      appBar: currentIndex == 2
-          ? AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: Colors.white,
-        title: Row(
-          children: [
-            Container(
-              width: 50,
-              height: 50,
-              // color: Colors.green,
-              decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  // border: Border.all(color: Colors.black38, width: 2),
-                  image: DecorationImage(
-                      image: AssetImage("assets/some_lawyer_icon.png"),
-                      fit: BoxFit.cover)),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                'DR. RAHUL DESAI',
-                style: GoogleFonts.lato(
-                    fontSize: 20, fontWeight: FontWeight.w300),
-              ),
-            ),
-          ],
-        ),
-        actions: [
-          IconButton(
-              onPressed: () {}, icon: const Icon(Ionicons.videocam,color: Color.fromARGB(200, 190, 169, 169))),
-          IconButton(onPressed: () {}, icon: const Icon(Ionicons.options,color: Color.fromARGB(200, 190, 169, 169),))
-          // SizedBox(width: 20,),
-        ],
-      )
-          : AppBar(
+      appBar: currentIndex==2?null:AppBar(
         automaticallyImplyLeading: false,
         iconTheme: const IconThemeData(
           color: Colors.black, //change your color here
