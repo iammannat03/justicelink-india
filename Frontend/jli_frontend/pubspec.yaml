@@ -9,9 +9,12 @@ environment:
   sdk: ">=3.2.4 <4.0.0"
 
 dependencies:
+  file_picker: ^6.1.1
   flutter:
     sdk: flutter
   google_fonts: ^6.1.0
+  http: ^1.2.1
+  ionicons: ^0.2.2
 
 dev_dependencies:
   flutter_test:
@@ -27,4 +30,22 @@ flutter:
     - assets/card-image-4.png
     - assets/card-image-5.png
     - assets/card-image-6.png
+    - assets/lawyer_face.png
+    - assets/lawyer_image_2.png
+    - assets/lawyer_image_3.png
+    - assets/action.png
+    - assets/logo.png
+    - assets/actual.jpg
+    - assets/user_profile.jpeg
+    - assets/user_final.png
+    - assets/explainer.jpg
+    - assets/tutorial.png
+    - assets/tutorial_man.png
+    - assets/actual_maybe.png
+    - assets/actual_actual.png
+    - assets/some_lawyer_icon.png
+    - assets/prisoner_profile_picture.png
+    - assets/solid_white.png
+    - assets/files_and_folders.png
+    - assets/files_and_folders_fade.png
   uses-material-design: true

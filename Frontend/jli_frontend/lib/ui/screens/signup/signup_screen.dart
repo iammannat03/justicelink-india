@@ -1,29 +1,54 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../utils/login_to_home_screen_button.dart';
+import 'package:jli_frontend/ui/screens/home/general/general_home_screen.dart';
+import 'package:jli_frontend/ui/screens/home/lawyers/lawyers_home_screen.dart';
+import 'package:jli_frontend/ui/screens/home/prisoners/prisoner_home_screen.dart';
+import 'package:jli_frontend/ui/screens/login/general/g_login_with_aadhar_screen.dart';
+import 'package:jli_frontend/ui/screens/login/lawyers/l_login_with_aadhar_screen.dart';
+import 'package:jli_frontend/ui/screens/login/prisoners/login_choose_screen.dart';
+import 'package:jli_frontend/ui/utils/signup_button.dart';
 
-class LoginWithAadhaarScreen extends StatefulWidget {
-  const LoginWithAadhaarScreen({super.key});
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key, required this.user});
+
+  final String user;
 
   @override
-  State<LoginWithAadhaarScreen> createState() => _LoginWithAadhaarScreenState();
+  State<SignupScreen> createState() => _SignupScreenState();
 }
 
-class _LoginWithAadhaarScreenState extends State<LoginWithAadhaarScreen> {
-
-  void loginUser() async{
-    if(aadharController.text.isNotEmpty && otpController.text.isNotEmpty){
-
-    }
-  }
-
-  // controllers
-  final TextEditingController aadharController = TextEditingController();
-  final TextEditingController otpController = TextEditingController();
+class _SignupScreenState extends State<SignupScreen> {
+  final TextEditingController prisonerAadharController =
+      TextEditingController();
+  final TextEditingController prisonerOtpController = TextEditingController();
+  final TextEditingController lawyerAadharController = TextEditingController();
+  final TextEditingController lawyerOtpController = TextEditingController();
+  final TextEditingController generalAadharController = TextEditingController();
+  final TextEditingController generalOtpController = TextEditingController();
+  
 
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController selectedAadharController = prisonerAadharController;
+    TextEditingController selectedOtpController = prisonerOtpController;
+
+    Widget selectedLoginScreen = LoginChooseScreen();
+    Widget selectedHomeScreen = PrisonerHomeScreen();
+
+    if (widget.user == 'lawyer') {
+      selectedAadharController = lawyerAadharController;
+      selectedOtpController = lawyerOtpController;
+      selectedHomeScreen = LawyerHomeScreen();
+      selectedLoginScreen= LLoginWithAadharScreen();
+
+    } else if (widget.user == 'general') {
+      selectedAadharController = generalAadharController;
+      selectedOtpController = generalOtpController;
+      selectedHomeScreen = GeneralHomeScreen();
+      selectedLoginScreen = GLoginWithAadharScreen();
+    }
+
     Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
@@ -88,7 +113,8 @@ class _LoginWithAadhaarScreenState extends State<LoginWithAadhaarScreen> {
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(20, 15, 20, 0),
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(20, 15, 20, 0),
                     child: ListView(
                       // physics: NeverScrollableScrollPhysics(),
                       padding: EdgeInsets.zero,
@@ -98,7 +124,7 @@ class _LoginWithAadhaarScreenState extends State<LoginWithAadhaarScreen> {
                         const Align(
                           alignment: AlignmentDirectional(0.00, 0.00),
                           child: Text(
-                            'LOGIN',
+                            'SIGN UP',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontFamily: 'Julius Sans One',
@@ -110,13 +136,13 @@ class _LoginWithAadhaarScreenState extends State<LoginWithAadhaarScreen> {
                         ),
                         Container(
                           width: 100,
-                          height: 280,
+                          height: 324,
                           decoration: const BoxDecoration(
                             color: Colors.white,
                           ),
                           child: Padding(
-                            padding:
-                            const EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0, 10, 0, 10),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -126,7 +152,7 @@ class _LoginWithAadhaarScreenState extends State<LoginWithAadhaarScreen> {
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 0, 10),
                                   child: TextFormField(
-                                    controller: aadharController,
+                                    controller: selectedAadharController,
                                     keyboardType: TextInputType.number,
                                     maxLength: 12,
 
@@ -175,17 +201,13 @@ class _LoginWithAadhaarScreenState extends State<LoginWithAadhaarScreen> {
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 0, 0),
                                   child: TextFormField(
-                                    controller: otpController,
+                                    controller: selectedOtpController,
                                     keyboardType: TextInputType.number,
                                     // controller: _model.textController2,
                                     autofocus: true,
                                     obscureText: false,
                                     decoration: InputDecoration(
-                                      labelText: 'Enter OTP recieved',
-                                      // labelStyle: FlutterFlowTheme.of(context)
-                                      //     .labelMedium,
-                                      // hintStyle: FlutterFlowTheme.of(context)
-                                      //     .labelMedium,
+                                      labelText: 'Enter OTP received',
                                       enabledBorder: UnderlineInputBorder(
                                         borderSide: const BorderSide(
                                           color: Colors.white,
@@ -222,14 +244,34 @@ class _LoginWithAadhaarScreenState extends State<LoginWithAadhaarScreen> {
                                     //     .asValidator(context),
                                   ),
                                 ),
-                                const Align(
+                                Align(
                                   alignment: AlignmentDirectional(0.00, 0.00),
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 15, 0, 0),
-                                    child: LoginToHomeScreenButton(),
+                                    child: SignupButton(user: widget.user, selectedHomeScreen: selectedHomeScreen,),
                                   ),
                                 ),
+                                Center(
+                                  child: TextButton(
+                                    onPressed: () {
+
+                                      Navigator.of(context).push(MaterialPageRoute(builder: (_)=>selectedLoginScreen));
+
+                                    },
+                                    child: Text(
+                                      'Already a user? log-in',
+                                      style: GoogleFonts.lato(
+                                          fontSize: 18,
+                                          decoration: TextDecoration.underline,
+                                          decorationColor: Theme.of(context)
+                                              .colorScheme
+                                              .primary,
+                                          decorationStyle:
+                                              TextDecorationStyle.wavy),
+                                    ),
+                                  ),
+                                )
                               ],
                             ),
                           ),

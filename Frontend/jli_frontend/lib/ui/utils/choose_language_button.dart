@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jli_frontend/ui/user_type_choice_screen.dart';
 
-import '../screens/login_choose_screen.dart';
+import '../screens/login/prisoners/login_choose_screen.dart';
 
 class ChooseLanguageButton extends StatelessWidget {
   const ChooseLanguageButton({super.key, required this.lang});
@@ -15,7 +16,7 @@ class ChooseLanguageButton extends StatelessWidget {
       child: ElevatedButton(
           onPressed: () {
             Navigator.of(context).push(
-              MaterialPageRoute(builder: (_) => const LoginChooseScreen()),
+              MaterialPageRoute(builder: (_) => const UserTypeChoiceScreen()),
             );
           },
           style: ElevatedButton.styleFrom(
