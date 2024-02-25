@@ -78,23 +78,26 @@ class _FindLawyersScreenState extends State<FindLawyersScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemBuilder: (BuildContext context, int index) {
-        return Builder(
-          builder: (context) {
-            return GestureDetector(
-              onTap: (){
-                // setState(() {
-                //   YourAlertDialog(lawyer: _lawyers[index],);
-                // });
-                Navigator.of(context).push(MaterialPageRoute(builder: (_)=>YourAlertDialog(lawyer: _lawyers[index])));
-
-              } ,
-                child: RecommendedLawyerCard(lawyer: _lawyers[index], context: context,));
-          }
-        );
-      },
-      itemCount: _lawyers.length,
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: ListView.builder(
+        itemBuilder: (BuildContext context, int index) {
+          return Builder(
+            builder: (context) {
+              return GestureDetector(
+                onTap: (){
+                  // setState(() {
+                  //   YourAlertDialog(lawyer: _lawyers[index],);
+                  // });
+                  Navigator.of(context).push(MaterialPageRoute(builder: (_)=>YourAlertDialog(lawyer: _lawyers[index])));
+      
+                } ,
+                  child: RecommendedLawyerCard(lawyer: _lawyers[index], context: context,));
+            }
+          );
+        },
+        itemCount: _lawyers.length,
+      ),
     );
   }
 }

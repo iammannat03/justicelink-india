@@ -1,8 +1,77 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ionicons/ionicons.dart';
+import 'package:jli_frontend/api/gemini_api.dart';
+import 'package:jli_frontend/ui/screens/home/prisoners/find_lawyers_screen.dart';
+import 'package:jli_frontend/ui/widgets/chat_bot_message_card.dart';
+import 'dart:async';
+import '../../../../models/chatbot_message.dart';
 
-class LegalChatBotScreen extends StatelessWidget {
+class LegalChatBotScreen extends StatefulWidget {
   const LegalChatBotScreen({Key? key}) : super(key: key);
+
+  @override
+  State<LegalChatBotScreen> createState() => _LegalChatBotScreenState();
+}
+
+class _LegalChatBotScreenState extends State<LegalChatBotScreen> {
+
+  TextEditingController _chatController = TextEditingController();
+
+  List<ChatBotMessage> _chatMessages = [];
+  String result = '';
+
+  void askGemini () async {
+    result = await GeminiApi.getGeminiData(_chatController.text);
+    Timer(const Duration(milliseconds: 1500), () {});
+    setState(() {
+      _chatMessages.add(ChatBotMessage(message: result, user: 'chatbot'));
+    });
+  }
+
+  void sendQuery () {
+    setState(() {
+      _chatMessages.add(ChatBotMessage(message: _chatController.text, user: 'prisoner'));
+    });
+    askGemini();
+    _chatController.clear();
+
+  }
+
+  void findLawyers(){
+    // gemini works here
+    Timer(const Duration(seconds: 0), () {
+      setState(() {
+
+        _chatMessages.add(const ChatBotMessage(message: 'Find me a lawyer', user: 'prisoner'));
+      });
+    });
+
+    Timer(const Duration(seconds: 2), () {
+      setState(() {
+        _chatMessages.add(const ChatBotMessage(message: 'Analyzing profile', user: 'chatbot'));
+      });
+    });
+
+    Timer(const Duration(seconds: 4), () {
+      setState(() {
+        _chatMessages.add(const ChatBotMessage(message: 'Analyzing charge_sheet.pdf', user: 'chatbot'));
+      });
+    });
+
+    Timer(const Duration(seconds: 5), () {
+      setState(() {
+
+        _chatMessages.add(const ChatBotMessage(message: 'Finding suitable lawyers', user: 'chatbot'));
+      });
+    });
+    Timer(const Duration(seconds: 6), () {
+      Navigator.of(context).push(MaterialPageRoute(builder: (_)=>const FindLawyersScreen()));
+    });
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +107,77 @@ class LegalChatBotScreen extends StatelessWidget {
         ),
       ),
       backgroundColor: const Color.fromARGB(255, 241, 244, 248),
+      floatingActionButton: Container(
+        width: MediaQuery.sizeOf(context).width*0.93,
+        child: Row(
+
+          children: [
+            SizedBox(
+              width: MediaQuery.sizeOf(context).width*0.813,
+              child: FloatingActionButton(onPressed: () {
+
+              },
+                child: TextFormField(
+                  controller: _chatController,
+                  cursorColor: Colors.black,
+                  // autofocus: true,
+                  obscureText: false,
+                  decoration: InputDecoration(
+                    labelText: 'For example: What are my fundamental rights?',
+                    labelStyle: const TextStyle(
+                        fontSize: 13,
+                        fontStyle: FontStyle.italic,
+                        color: Colors.black,
+                    ),
+                    hintStyle: const TextStyle(
+                      fontFamily: 'Readex Pro',
+                      color: Color(0x7914181B),
+                      fontStyle: FontStyle.italic,
+                    ),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: const BorderSide(
+                        color: Color.fromARGB(225, 224, 227, 231),
+                        width: 2,
+                      ),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: const BorderSide(
+                        color: Color.fromARGB(255, 241, 244, 248),
+                        width: 2,
+                      ),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    errorBorder: UnderlineInputBorder(
+                      borderSide: const BorderSide(
+                        color: Color.fromARGB(255, 241, 244, 248),
+                        width: 2,
+                      ),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    focusedErrorBorder: UnderlineInputBorder(
+                      borderSide: const BorderSide(
+                        color: Color.fromARGB(255, 241, 244, 248),
+                        width: 2,
+                      ),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    filled: true,
+                    fillColor: const Color.fromARGB(225, 224, 227, 231),
+                  ),
+                  style: const TextStyle(
+                    fontFamily: 'Readex Pro',
+                    fontStyle: FontStyle.italic,
+                  ),
+                ),
+
+
+              ),
+            ),
+            IconButton(onPressed: sendQuery, icon: const Icon(Ionicons.send))
+          ],
+        ),
+      ),
       body: SafeArea(
         top: true,
         child: ListView(
@@ -50,171 +190,94 @@ class LegalChatBotScreen extends StatelessWidget {
               decoration: const BoxDecoration(
                 color: Color.fromARGB(255, 241, 244, 248),
               ),
-              child: const Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
+              child: Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
                 child: Text(
-                  'Your Legal Assistant chatbot',
-                  style: TextStyle(
-                    fontFamily: 'Julius Sans One',
+                  'Your Legal Assistant',
+                  style: GoogleFonts.juliusSansOne(
                     fontSize: 32,
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(10, 0, 10, 10),
-              child: Container(
-                width: 100,
-                height: 383,
-                decoration: const BoxDecoration(
-                  color: Color.fromARGB(255, 241, 244, 248),
-                ),
-                child: const Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
-                  child: Text(
-                    'Dear Fellow Indian,\n\nMany of us are unaware of our fundamental rights, enshrined in our Constitution, which can safeguard us in uncertain situations. The Constitution, under Articles like 14 (Right to Equality), 20 (Protection in Respect of Conviction for Offenses), and 21 (Right to Life and Personal Liberty), provides crucial protections.\n\nHowever, knowledge of these rights is limited. This lack of awareness can affect our access to justice. \n\nTo bridge this gap, we offer a chatbot that can answer your questions about fundamental rights and provide legal aid information. Don\'t hesitate to ask about your rights, legal procedures, or any concerns you may have. Empower yourself with knowledge and protect your rights.\n\nExplore the chatbot below for assistance. Your rights matter!\n',
-                    style: TextStyle(
-                      fontFamily: 'Callibri',
-                      fontWeight: FontWeight.w300
-                    )
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              width: 100,
-              height: 41,
-              decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 241, 244, 248),
-              ),
-              child: const Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
-                child: Text(
-                  'Enter your question or legal concern below:',
-                  style: TextStyle(
-                    fontFamily: 'Open Sans',
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-              ),
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+              child: Text("Welcome to JusticLink India's legal assistant, powered by Gemini Pro.\nGet answers to your doubts with our chatbot. Also try our 'Find lawyers' feature to find a suitable lawyer for your case.",
+              style: GoogleFonts.lato(fontSize: 17,),),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(20, 0, 20, 30),
-              child: TextFormField(
-                cursorColor: Colors.black,
-                autofocus: true,
-                obscureText: false,
-                decoration: InputDecoration(
-                  labelText: 'For example: What are my fundamental rights',
-                  labelStyle: const TextStyle(
-                    fontFamily: 'Readex Pro',
-                    fontStyle: FontStyle.italic,
-                    color: Colors.black
-                  ),
-                  hintStyle: const TextStyle(
-                    fontFamily: 'Readex Pro',
-                    color: Color(0x7914181B),
-                    fontStyle: FontStyle.italic,
-                  ),
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: const BorderSide(
-                      color: Color.fromARGB(225, 224, 227, 231),
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: const BorderSide(
-                      color: Color.fromARGB(255, 241, 244, 248),
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  errorBorder: UnderlineInputBorder(
-                    borderSide: const BorderSide(
-                      color: Color.fromARGB(255, 241, 244, 248),
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  focusedErrorBorder: UnderlineInputBorder(
-                    borderSide: const BorderSide(
-                      color: Color.fromARGB(255, 241, 244, 248),
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  filled: true,
-                  fillColor: const Color.fromARGB(225, 224, 227, 231),
-                ),
-                style: const TextStyle(
-                  fontFamily: 'Readex Pro',
-                  fontStyle: FontStyle.italic,
-                ),
-              ),
-            ),
-            Container(
-              width: 100,
-              height: 608,
-              decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 241, 244, 248),
-              ),
-              child: ListView(
-                physics: const NeverScrollableScrollPhysics(),
-                padding: EdgeInsets.zero,
-                scrollDirection: Axis.vertical,
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(2.0),
-                    child: Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: 37,
-                      decoration: const BoxDecoration(
-                        color: Color.fromARGB(255, 241, 244, 248),
-                      ),
-                      child: Align(
-                        alignment: const AlignmentDirectional(-1.00, 1.00),
-                        child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
-                          child: Text(
-                            'Result:',
-                            style: GoogleFonts.lato(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                  GestureDetector(
+                    child: Card(
+                      elevation: 0.1,
+                      color: Colors.grey.withAlpha(10),
+                      child: SizedBox(
+                        height: 120,
+                        width: MediaQuery.sizeOf(context).width*0.45,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('My Rights',style: GoogleFonts.lato(fontSize: 25))
+                          ],
                         ),
                       ),
                     ),
+                    onTap: (){
+                      _chatController.text = 'What are my basic rights?';
+                      sendQuery();
+
+                    },
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: 292,
-                      decoration: const BoxDecoration(
-                        color: Color.fromARGB(255, 241, 244, 248),
-                      ),
-                      child: Align(
-                        alignment: const AlignmentDirectional(-1.00, -1.00),
-                        child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(20, 5, 20, 20),
-                          child: Text(
-                            "Fundamental rights in India, outlined in the Constitution, encompass equality, freedom, protection against exploitation, and cultural and educational rights. The right to equality prohibits discrimination and promotes equal opportunities. Freedom rights include speech, assembly, association, and the practice of any profession. Protections against exploitation involve preventing human trafficking, forced labor, and child labor. Cultural and educational rights safeguard minority interests and grant them the right to establish educational institutions. Constitutional remedies empower citizens to seek judicial intervention for the enforcement of their fundamental rights.",
-                            style: GoogleFonts.openSans(
-                              color: const Color(0xFF5C3625),
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
+                  GestureDetector(
+                    onTap: (){
+                      print('pressed');
+                      findLawyers();
+                    },
+                    child: Card(
+                      elevation: 0.1,
+                      // color: Color.fromARGB(200, 192, 169, 169),
+                      color: const Color.fromARGB(100, 192, 169, 169),
+                      child: SizedBox(
+                        height: 120,
+                        width: MediaQuery.sizeOf(context).width*0.45,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Text('Find lawyers',style: GoogleFonts.lato(fontSize: 25),),
+                            // const Icon(Ionicons.arrow_forward)
+                          ],
                         ),
                       ),
                     ),
-                  ),
+                  )
                 ],
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 20),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(18),
+                  color: CupertinoColors.systemGrey2.color.withAlpha(100)
+                ),
+                height: 500,
+                width: MediaQuery.sizeOf(context).width*0.8,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ListView.builder(
+                    itemBuilder: (BuildContext context, int index,) {
+                      return ChatBotMessageCard(message: _chatMessages[index]);
+                    },
+                    itemCount: _chatMessages.length,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 30,)
           ],
         ),
       ),
